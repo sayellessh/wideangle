@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- Push Test success -->
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="service/core/CoreREST.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="service/core/CoreNET.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+	src="view/core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="view/resource/Resource.js"></script>
+
+<!-- Index -->
+<script type="text/javascript" charset="utf-8"
+	src="service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8" src="index.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="service/entity/synchronize/SynchronizeLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" 
+	src="service/upgrade/UpgradeService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="service/entity/upgrade/UpgradeLocalDAO.js"></script>
+
+</head>
+<script>
+document.addEventListener("deviceready", com.swaas.hidoctor.edetailing.ui.view.Index.startup, false);
+</script>
+<body>
+	<div data-role="page" id="page-home" class="type-interior" data-theme="a">
+	</div>
+</body>
+</html>

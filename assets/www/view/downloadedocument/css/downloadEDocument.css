@@ -1,0 +1,9 @@
+#lightBox{
+background-color : black;
+border : 8px solid white;
+height : 400px;
+width : 400px;
+}
+#lightBox tr td { 
+text-align : center;
+}

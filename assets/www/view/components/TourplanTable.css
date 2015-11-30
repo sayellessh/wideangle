@@ -1,0 +1,115 @@
+#tpForWeekTable {
+	list-style: none;
+}
+
+#tpForWeekTable li.title {
+	color: white; 
+	padding: 10px; 
+	font-size: 20px; 
+	background-color: #3f464c
+}
+
+#tpForWeekTable li.sub-title {
+	color: black; 
+	padding: 10px; 
+	font-size: 20px; 
+	background-color: #D1D3D4;
+}
+
+#tpForWeekTable li {
+	padding: 10px; 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#tpForWeekTable {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	border-right: 1px solid #3f464c;
+}
+
+.tpdates{
+font-size : 24px
+}
+
+.tpdetails{
+font-size : 12px
+}
+
+.tpSelectedRow {
+	background-color: #026293;
+	color: white; 
+	border: 1px solid #026293 !important;
+}
+
+.tpSelectedRow .leftCell{
+	padding: 15px;
+	/* border: 1px solid white; */
+}
+
+.tpSelectedRow .rightCell{
+	padding: 10px;
+}
+
+.tpNormalRow {
+	background-color : #EEEEEE;
+	color: black;
+}
+
+.tpNormalRow .leftCell{
+	padding: 15px;
+	/* border: 1px solid white; */
+}
+
+.tpNormalRow .rightCell{
+	padding: 10px;
+}
+
+.weeklytpFirstDay {
+font-size: 10px;
+}
+
+.weeklyTPDay {
+font-size: 10px;
+color: #150517;
+}
+.weeklytpFirstDate {
+font-weight: bold;
+font-size: 24px;
+}
+.weeklyTPDate {
+color: #150517;
+font-size: 24px;
+font-weight: 200;
+}
+
+.weeklyTPFirstMonthYear {
+font-size: 10px;
+}
+.weeklyTPMonthYear {
+font-size: 10px;
+color: #150517;
+}
+
+.weeklyTPDateStatus {
+font-size: 10px;
+}
+
+.weeklyTPFromPlace {
+font-size: 10px;
+}
+.weeklyTPToPlace {
+font-size: 10px;
+}
+.weeklyTP_CPName {
+font-size: 10px;
+}
+.weeklyTPDoctorCoverd {
+font-size: 10px;
+}
+.tpRightCell tr td {
+
+text-align : left;
+padding-left : 4px;
+color : #FFFFFF;
+}

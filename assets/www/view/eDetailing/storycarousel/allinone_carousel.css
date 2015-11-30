@@ -1,0 +1,177 @@
+/*
+skins available:
+	- sweet
+	- powerful
+	- charming
+*/
+
+/* the container */
+.allinone_carousel {
+	position:relative;
+}
+.allinone_carousel img {
+	max-width:none;
+	max-height:none;
+}
+.allinone_carousel_list {
+	margin:0;
+	padding:0;
+	list-style:none;
+	display:none;
+}
+
+.allinone_carousel .contentHolder {
+	position:relative;
+	overflow:hidden;
+}
+.mycanvas {
+	position:absolute;
+	top:8px;
+	right:10px;
+	z-index:600;
+}
+
+.myloader {
+	background:url(skins/loader.gif);
+	width:37px;
+	height:37px;
+	position:absolute;
+	left:49%;
+	top:49%;
+	z-index:599;
+}
+
+
+/***sweet SKIN***/
+
+.allinone_carousel.sweet .contentHolderUnit {
+	position:absolute;
+	/*float:left;
+	display:block;*/
+	width:520px;
+	height:385px;
+	overflow:hidden;
+	cursor: pointer;
+	/*border:1px #F00 solid;*/
+	background:url(skins/sweet/empty.gif) repeat;
+}
+
+
+.allinone_carousel.sweet .elementTitle {
+	position:relative;
+	left:0;
+	bottom:-50px;
+	width:100%;
+	text-align:center;
+	font: 21px/26px 'Cinzel';
+	color:#933;
+	text-transform:capitalize;
+}
+.allinone_carousel.sweet .playOver {
+	position:absolute;
+	width:100px;
+	height:70px;
+	background:url(skins/sweet/play_overON.png) 0 0 no-repeat;
+	display:none;
+	z-index:200;
+	cursor: pointer;
+}
+
+.allinone_carousel.sweet .playOver:hover {
+	background:url(skins/sweet/play_overOFF.png) 0 0 no-repeat;
+	display:none;
+	z-index:200;
+	cursor: pointer;
+}
+
+.allinone_carousel.sweet .bannerControls {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:101;
+	width:100%;
+}
+
+.allinone_carousel.sweet .leftNav {
+	position:absolute;
+	left:-5px;
+	width:110px;
+	height:157px;
+	background:url(skins/sweet/leftNavOFF.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+.allinone_carousel.sweet .leftNav:hover {
+	background:url(skins/sweet/leftNavON.png) 0 0 no-repeat;
+}
+.allinone_carousel.sweet .rightNav {
+	position:absolute;
+	right:-5px;
+	width:110px;
+	height:157px;
+	background:url(skins/sweet/rightNavOFF.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+.allinone_carousel.sweet .rightNav:hover {
+	background:url(skins/sweet/rightNavON.png) 0 0 no-repeat;
+}
+.allinone_carousel.sweet .bottomNav {
+	position:absolute;
+	height:35px;
+	width:0;
+	padding-left:9px;
+	z-index:140;
+}
+.allinone_carousel.sweet .bottomNavButtonOFF {
+	float:left;
+	display:block;
+	width:13px;
+	height:13px;
+	background:url(skins/sweet/bottomNavOFF.png) 0 0 no-repeat;
+	padding-left:9px;
+	cursor: pointer;
+}
+
+.allinone_carousel.sweet .bottomNavButtonON {
+	float:left;
+	display:block;
+	width:11px;
+	height:11px;
+	padding-left:9px;
+	background:url(skins/sweet/bottomNavON.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+
+.allinone_carousel.sweet .bottomNavLeft {
+	position:absolute;
+	width:63px;
+	height:35px;
+	bottom:-10px;
+	z-index:140;
+}
+.allinone_carousel.sweet .bottomNavRight {
+	position:absolute;
+	width:63px;
+	height:35px;
+	bottom:-10px;
+	z-index:140;
+}
+
+.allinone_carousel.sweet .bottomOverThumb {
+	position:absolute;
+	width:88px;
+	height:106px;
+	background:url(skins/sweet/bottomOverThumbBg.png) 23px bottom no-repeat;
+	bottom:27px;
+	margin-left:-25px;
+}
+.allinone_carousel.sweet .bottomOverThumb img {
+	border:4px solid #FFFFFF;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/MockGeolocation.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>	
+
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+
+<!-- Synchronize -->
+<script type="text/javascript" charset="utf-8" src="prepareMyTablet.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/synchronize/DownSynchronizeService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<!-- Error -->
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	 href="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.css" />
+<script type="text/javascript" 
+	src="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.js"></script>
+	
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserDivisionLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserDivisionRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/configuration/ConfigurationLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/configuration/ConfigurationRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRConfigSettingsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRConfigSettingsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRPrivilegeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRPrivilegeRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/division/DivisionEntityMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/division/DivisionEntityMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/AccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/AccompanistRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPHeaderRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPAccompanistRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPDoctorRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPSFCRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/brand/BrandLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/brand/BrandRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorCategoryRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/ActivityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/ActivityMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/ExpenseEntityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/ExpenseEntityMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/speciality/SpecialityRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/customer/CustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/customer/CustomerRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorProductMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/McDoctorsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/McDoctorsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/ProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/ProductsByUserProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/CompetitorProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/SalesProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/SaleProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/SaleProductMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserProductMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DenormAssetQueryInputsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DenormAssetQueryInputsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/StoryRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/StoryLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/StoryAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/StoryAssetLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetResultLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/core/ZipUtil.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/asset/AssetService.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/SelectedAccompanistLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DAAnalyticHistoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DAAnalyticHistoryRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DATagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DATagMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/product/ProductCategorySyncService.js"></script>
+<!-- new  -->
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetBillingLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DATagAnalyticLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorTagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorTagMasterRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/upgrade/UpgradeRemoteDAO.js"></script> 
+		
+
+
+</head>
+<script>
+document.addEventListener("deviceready", com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.init, false);
+</script>
+
+<body>
+	<div id="pageDiv"  data-role="page" id="page-login" class="type-interior">
+		<div data-role="header" id="header">		
+		</div >
+		<h2><label id="prepareMyTabletCaption"></label></h2>
+		<div id="error" style="padding:10px;display:none;z-index:9000;background-color: #767573;">
+			<table  style="border-collapse: collapse; border: none; " >
+				<tr bgcolor="#1F4E79">
+					<td style="border:none;">
+					<label id="errorMessageCaption" style='font-size: large; color: white;'></label><br/><br/>
+					</td>
+				</tr>
+				<tr bgcolor="#1589FF">
+					<td style="border:none;">
+					<label id="errormessage" style='color: white;'></label><br/><br/>
+					</td>
+				</tr>
+				<tr bgcolor="#1589FF">
+					<td bstyle="border:none;">
+					<table width="100%"><tr><td align="right">
+			 		<button style="text-align:left;" data-role="button" data-inline="true"  onclick="com.swaas.hidoctor.edetailing.service.DownSynchronizeService.setPopUpValue(true);">&nbsp;Retry&nbsp;</button>
+					<button style="text-align: right;" data-role="button" data-inline="true"  onclick="com.swaas.hidoctor.edetailing.service.DownSynchronizeService.setPopUpValue(false);">&nbsp;Quit&nbsp;</button>
+					</td></tr></table>		
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div style="padding:10px">
+			<div id="progressDiv" class="ui-bar-b" style="display:none;padding:10px">
+				<div id="progressDivUSER" style="display:none">
+				  <label id="progressStatusUSER" ></label>
+				  <div id="progressbarUSER"></div>
+				  <br/>
+				</div>
+				<div id="progressDivTP" style="display:none">
+				   <label id="progressStatusTP"></label>
+				   <div id="progressbarTP"></div>
+				   <br/>
+				</div>
+				<div id="progressDivMASTER" style="display:none">
+				  <label id="progressStatusMASTER"></label>
+				  <div id="progressbarMASTER"></div>
+				  <br/>
+				</div>
+				
+				<div id="accompanistsConfirmationDiv" style="background-color: #5589CA;display: none;">
+					<table>
+						<tr>
+							<td width=20%>&nbsp;</td>
+							<td width=80%><div id="accompanistsConfirmationDialog" width="100%" ></div></td>
+							<td width=20%>&nbsp;</td>
+						</tr>
+						<tr>
+						<td width=20%>&nbsp;</td>
+						<td width=80% align="right">
+							<button data-role="button" data-inline="true" data-theme="c" onclick="com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.accompanistsConfirmation(true);">&nbsp;Yes&nbsp;</button>
+							<button data-role="button" data-inline="true" data-theme="c" onclick="com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.accompanistsConfirmation(false);">&nbsp;No&nbsp;</button>
+						</td>
+						<td width=20%>&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			    
+ 				<div id="accompanistsSelectionDiv" style="background-color: #5589CA;display: none;">
+					<table>
+						<tr>
+							<td valign="top"><div id="tpAccompanistDiv"></div></td>
+							<td width="5%">&nbsp;</td>
+							<td valign="top">
+								<div id="accompanistDiv">
+									<label id="selectAccompanistCaption"></label>
+									<table>
+									<tr>
+										<td colspan="2" id="calendar">
+											<div id="prepareTabCalendar" ><table width="100%" height="100%" id="smallCalendar" cellspacing="0" cellpadding="0"></table></div>
+										</td>
+
+										</tr>								
+										<tr>
+											<td>
+												<select id="selectTP1" data-theme="c">
+	                								<option value="">Select a Accompanist1</option>
+	           						 			</select>
+											</td>
+											<td>
+												<select id="selectTP2" data-theme="c">
+	                								<option value="">Select a Accompanist2</option>
+	           						 			</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<select id="selectTP3" data-theme="c">
+	                								<option value="">Select a Accompanist3</option>
+	           						 			</select>
+											</td>
+											<td>
+												<select id="selectTP4" data-theme="c">
+	                								<option value="">Select a Accompanist4</option>
+	           						 			</select>
+											</td>
+										</tr>
+									</table>
+									 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td>
+								<button data-role="button" data-inline="true" data-theme="c" onclick="com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.processSelectedAccompanists();">Continue</button>
+							</td>
+							<td width=20%>&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="progressDivDOCTOR" style="display:none">
+				  <label id="progressStatusDOCTOR"></label>
+				  <div id="progressbarDOCTOR"></div>
+				  <br/>
+				</div>
+				<div id="progressDivDOCUMENT" style="display:none">
+				  <label id="progressStatusDOCUMENT"></label>
+				  <div id="progressbarDOCUMENT"></div>
+				  <br/>
+				</div>
+				<label id="progressStatusALL"></label>
+				<div id="progressbarALL"></div>
+				<br/>	
+			</div>
+			<div align="right" style="display:none" id="buttonDiv">
+				<button id="continueButton" onclick="com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.confirmationDownloadEDocuments();" 
+						data-role="button" data-theme="c" 
+						data-mini="true" data-inline="true">Continue</button>
+			</div>
+			
+			<div id="downloadEDocumentDiv" style="padding:10px;display:none;z-index:9000;" class="ui-body ui-body-d" >
+				<label id="downloadEDocumentCaption" style='font-size: large'></label><br/>
+				<label id="downloadEdocumentDearLbl"></label><br/><br/>
+				<label id="downloadEdocumentMessage"></label><br><br/>
+				<div id = "retiredAssetDiv">
+				<table id = "retiredAssettable"> 
+				<tbody></tbody></table>
+				</div>
+				<table width="100%"><tr><td align="right">
+					<button id="downloadEDocumentOKBtn" data-role="button" data-inline="true" onclick="com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.downloadEDocumentConfirmation(true);"></button>
+					<button id="downloadEDocumentCancelBtn" data-role="button" data-inline="true" onclick="com.swaas.hidoctor.edetailing.ui.view.PrepareMyTablet.downloadEDocumentConfirmation(false);"></button>
+				</td></tr></table>				
+			</div>
+		</div>	
+	</div>
+	<p class="copy_right"> &copy; Powered by SwaaS</p>
+</body>
+</html>

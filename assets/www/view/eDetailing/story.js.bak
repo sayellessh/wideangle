@@ -1,0 +1,816 @@
+/* 
+	Things to replace while putting in to android
+	
+	AssetService:
+	-------------
+
+	1) DigitalAssetLocalDAO,
+	2) DAAnalyticHistoryLocalDAO
+	3) DATagMasterLocalDAO
+	4) DigitalAssetBillingLocalDAO
+	5) DATagAnalyticLocalDAO
+	6) McDoctorsLocalDAO
+
+
+	ProductService:
+	---------------
+
+	1) ProductLocalDAO
+	2) UserProductMappingLocalDAO
+	3) SpecialityLocalDAO
+	4) BrandLocalDAO
+	
+	a) coreviewNew
+	b) utilios
+	
+	Replace this file from the ios files
+*/
+
+function storySlider(options) {
+
+	var $el = $(el);
+	var items = options.items;
+
+
+}
+
+com.swaas.hidoctor.edetailing.ui.view.story = {
+    currentStory : null,
+    clickedAsset: null,
+    currentStoryAssets: null,
+    selectedProduct: null,
+    docOpenDeatils : {docOpen : false, openTime : 0,closeTime : 0, daBillingId : null },
+    showListAssets: new Array(),
+    playListArray:new Array(),
+    init: function(){
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        ED.includeStoryHeader(ED.context.request.selectedDoctor);
+        _this.createStoryBar();
+        _this.renderStories();
+       /* tab section */
+       $("#asset_part").hide();
+       $("#story_part").show();
+       $("#show_part").hide();
+       $(".menu .product_sec").hide();
+       $('.search_sec').css('visibility', 'hidden');
+        //will be removed
+        $('.popup_input').textinput({theme: 'none'});
+        
+    },
+    createStoryBar: function() { //alert('html header');
+    	var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        ED.showLoading();
+        var html = '';
+        html+='<div class="menu">';
+        html+='<div class="search_sec"> <input class="product_search" type="text" value="" /> </div>';
+        html+='<ul class="slide_menu"><li ><a href="#asset_part">Asset View</a></li><li class="active"><a href="#story_part">Story View</a></li><li><a href="#show_part">Show List</a></li></ul>';
+        html+='<div class="product_sec"><label>Product Name</label><div class="select_box">';
+        html+='<select class="productSelect"></select>';
+        html+='<div class="show" id="show_asset">show</div>';
+        html+='</div></div>';
+        html+='</div>';
+        
+        $(html).insertAfter('#header');
+        $('.product_search').textinput();
+        $('.productSelect').selectmenu({theme : 'none'});
+        
+        $('.slide_menu li a').bind('click', function(e){
+			$("#show_part, #story_part, #menu_list, #asset_part").hide();
+			$(".slide_menu li").removeClass("active");
+			var selectedTab = $(this).attr('href');
+			$(this).parent().addClass("active");
+			$(selectedTab).show();
+			   if(($(selectedTab).attr('id'))=='show_part'){
+		           $('.menu .product_sec').hide();
+		           $('.search_sec').css('visibility', 'hidden');
+		           _this.addToShowList();
+	           }
+	           else if(($(selectedTab).attr('id'))=='story_part'){
+		           $('.menu .product_sec').hide();
+		           $('.search_sec').css('visibility', 'hidden');
+	           }else{
+		           $('.menu .product_sec').show();
+		           $('.search_sec').css('visibility', 'visible');
+		           $('#show_asset').trigger('click');
+               }
+			return false;                   
+       });
+        
+        var doctor = ED.context.request.selectedDoctor;
+        this.getDoctorProducts(doctor);
+        this.searchAssets();
+    },
+    searchAssets: function() {
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        $('input.product_search').bind('change', function(){
+            var srcString = $(this).val();
+            var matchedAssets = new Array();
+            if(_this.assets.length == 0)
+               alert('No assets found for this doctors');
+            var uniqueAsset = {};
+            
+            $.each(_this.assets, function(i, asset){
+                var name = asset.name;
+                name = name.toLowerCase();
+                if(uniqueAsset[asset.daCode] == null)
+                {
+                    uniqueAsset[asset.daCode] = asset;
+                    if(name.indexOf(srcString) > -1) {
+                        matchedAssets.push(asset);
+                    }
+                }
+                
+            });
+            if(matchedAssets && matchedAssets.length > 0 ) {
+                var finalAssets = new Array();
+               _this.getAssetAnalytics(0, matchedAssets, finalAssets);
+            } else {
+                $('.asset_list').remove();
+                $('.info_msg, .warning_msg').remove();
+                $('#asset_part').prepend('<p class="warning_msg">No Assets found for search string</p>');
+                alert('No assets matches the string');
+            }
+        });
+    },
+    loadProducts: function(onLoadProducts) {
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        var moreProducts = [];
+        com.swaas.hidoctor.edetailing.service.ProductService.getProductsHasAssets(function(products){
+            var optionHtml = '';
+            $.each(products, function(i, product){
+               optionHtml += '<option value="' + product.productCode + '">'  + product.productName + '</option>';
+            });
+            $('.productSelect').append(optionHtml);
+            ED.hideLoading();
+            
+            $('#show_asset').bind('click', function(){
+                var prdCode = $('select.productSelect').val();
+                if(prdCode == null || prdCode == '')
+                    alert("Please select any product");
+                else
+                    _this.loadAssetByProductCode(prdCode);
+            });
+        }, null);
+    },
+    getDoctorProducts: function(doctor) {
+		var excludeMCAssets = true;
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        com.swaas.hidoctor.edetailing.service.ProductService.getDoctorProductsHasAssets(doctor, function(mappedDoctorProducts){
+            var productCodes = {};
+            if(mappedDoctorProducts.length > 0){
+                var mappedProductCodes = [];
+                $.each(mappedDoctorProducts, function(index, mappedDoctorProduct) {
+                    mappedProductCodes.push(mappedDoctorProduct.productCode);
+                    productCodes[mappedDoctorProduct.productCode] = mappedDoctorProduct.productCode;
+                });
+                com.swaas.hidoctor.edetailing.service.AssetService.getAssetsForProductCodes(mappedProductCodes, excludeMCAssets, function(assets){
+                    _this.assets = assets;
+                    _this.getSpotLiteProducts(doctor, mappedDoctorProducts, productCodes);
+                });
+            } else {
+                var products = new Array();
+                com.swaas.hidoctor.edetailing.service.AssetService.getAllAssetsForDoctorProfile(doctor, excludeMCAssets, function(assets){
+                    _this.assets = assets;
+                    if(assets.length > 0) { //alert(1);
+                        $.each(assets, function(index, asset){
+                            var productCode = asset.productCode;
+                            com.swaas.hidoctor.edetailing.service.ProductService.getProduct(productCode, function(product){
+                                if (productCodes[productCode] == null){
+                                    productCodes[productCode] = productCode;
+                                    if(product != null){
+                                        products.push(product[0]);
+                                    }
+                                }
+                                if(index == (assets.length - 1))
+                                    _this.getSpotLiteProducts(doctor, products, productCodes);
+                            });
+                        });
+                    } else {
+                        _this.getSpotLiteProducts(doctor, products, productCodes);
+                    }
+                });
+            }
+        });
+    },
+    getSpotLiteProducts: function(doctor, products, productCodes) {
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        com.swaas.hidoctor.edetailing.service.AssetService.getSpotliteAssetsWithProducts(doctor, function(spotliteAssets){
+            if (spotliteAssets && spotliteAssets.length > 0){
+                _this.assets = _this.assets.concat(spotliteAssets);
+                $.each(spotliteAssets, function(index, asset){
+                    var productCode = asset.productCode;
+                    com.swaas.hidoctor.edetailing.service.ProductService.getProduct(productCode, function(product){
+                        if (productCodes[productCode] == null){
+                            productCodes[productCode] = productCode;
+                            if(product != null){
+                                products.push(product[0]);
+                            }
+                        }
+                        if(index == (spotliteAssets.length - 1)) {
+                            _this.getOtherProductsWithAssets(products, productCodes);
+                        }
+                    });
+               });
+            } else {
+                _this.getOtherProductsWithAssets(products, productCodes);
+            }
+        });
+    },
+    getOtherProductsWithAssets: function(products, productCodes) {
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        //alert('preparedMappedAsset');
+       // alert(_this.assets);
+        if(_this.assets == null || _this.assets.length == 0){
+			_this.showMore = false;
+            com.swaas.hidoctor.edetailing.service.AssetService.getAllAssets(true, function(assets){
+                _this.assets = _this.assets.concat(assets);
+                $.each(_this.assets, function(index, asset){
+                    var productCode = asset.productCode;
+                    com.swaas.hidoctor.edetailing.service.ProductService.getProduct(productCode, function(product){
+                        if (productCodes[productCode] == null){
+                            productCodes[productCode] = productCode;
+                            if(product != null){
+                                products.push(product[0]);
+                            }
+                        }
+                        if(index == (_this.assets.length - 1)) {
+                            _this.addDoctorProducts(products);
+                        }
+                    });
+                });
+            });
+        } else {
+            _this.addDoctorProducts(products);
+        }
+    },
+    addDoctorProducts: function(products) {
+        var optionHtml = '';
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        if(products && products.length > 0) {
+            $.each(products, function(i, product){
+                   optionHtml += '<option value="' + product.productCode + '">' + product.productName + '</option>';
+            });
+            $('select.productSelect').append(optionHtml);
+        }
+        ED.hideLoading();
+        
+        $('#show_asset').bind('click', function(){
+            var prdCode = $('select.productSelect').val();
+            if(prdCode != null) {
+                _this.selectedProduct = _this.getProduct(prdCode, products);
+                _this.loadAssetByProductCode(prdCode);
+            } else {
+                alert("Please select a product");
+            }
+        });
+        
+        //load default product at start
+        var prdCode = $('select.productSelect').val();
+        _this.selectedProduct = _this.getProduct(prdCode, products);
+        $('span.productSelect').text(_this.selectedProduct['productName']);
+        _this.loadAssetByProductCode(prdCode);
+    },
+    loadAssetByProductCode: function(productCode) { 
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        var uniqueAsset = {};
+        var uniqueAssets = [];
+        $.each(_this.assets, function(i, asset){
+            if(uniqueAsset[asset.daCode] == null) {
+                if(asset.productCode == productCode) {
+                    uniqueAssets.push(asset);
+                }
+                uniqueAsset[asset.daCode] = asset;
+            }
+        });
+    
+        
+        var finalAssets = new Array();
+        if(uniqueAssets && uniqueAssets.length > 0) {
+        	_this.getAssetAnalytics(0, uniqueAssets, finalAssets);
+        } else {
+            $('.asset_list').remove();
+            $('.info_msg, .warning_msg').remove();
+            $('#asset_part').prepend('<p class="warning_msg">No Assets found for '+_this.selectedProduct['productName']+'</p>');
+            $('.asset_list').remove();
+        }
+    },
+    getAssetAnalytics: function(i, uniqueAssets, finalAssets) {
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        console.log('the unique assets length ' + uniqueAssets.length);
+        if(i < uniqueAssets.length) {
+        	var curAst = uniqueAssets[i];
+            var assetCode = parseInt(curAst.daCode,10);
+            com.swaas.hidoctor.edetailing.service.AssetService.getAnalyticsForAsset(assetCode, function(analytics){
+                $.extend(curAst, analytics);
+                finalAssets.push(curAst);
+                console.log('the current index is ' + i);
+                if(i == (uniqueAssets.length-1)) {
+                    var assetTable = new AssetTableNew({
+                        assets: finalAssets,
+                        container: '#asset_part',
+                        tableId: 'asset_list',
+                        onAssetClicked: function(assetCode) {
+
+                        },
+                        onAssetHold: function(asset){
+                            //alert(JSON.stringify(asset));
+                        }
+                    });
+                } else {
+                    _this.getAssetAnalytics(i+1, uniqueAssets, finalAssets);
+                }
+            });
+        }
+    },
+    getProduct: function(productCode, products) {
+        var currentProduct = null;
+        $.each(products, function(i, product){
+            if(product.productCode == productCode)
+                currentProduct = product;
+        });
+        return currentProduct;
+    },
+    renderStories : function() {
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        /*com.swaas.hidoctor.edetailing.dao.storyLocalDAO.get(function(storyList){
+            _this.loadStoryCarousel(storyList);
+        });*/
+        //com.swaas.hidoctor.edetailing.dao.storyLocalDAO.get(com.swaas.hidoctor.edetailing.ui.view.story);
+        com.swaas.hidoctor.edetailing.dao.storyLocalDAO.get(_this.afterLoadStory);
+    },
+    afterLoadStory : function (storyList) {
+       var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+       $('#story_part').html('');
+       $('#story_part').append('<div class="story_slider" id="story_slider"></div>' +
+                '<div class="display_story" id="display_story"></div>'+
+                 '<ul class="menu_list" id="menu_list" style="display:none;"></ul>');
+        
+		if(storyList.length > 0){ 
+          var sliderDiv='';
+            sliderDiv+='<ul class="story_carousel">';
+            for(var i=0;i<storyList.length;i++){
+            	sliderDiv+='<li id="story_id_' +i+ '"><img class="story_frame" src="storycarousel/frame.jpg" /><div class="block" data-story="'+storyList[i].storyId+'"><img class="story_thumb" src="storycarousel/6.jpg" alt=""/><div class="story_detl"><div class="story_left"><p>'+storyList[i].storyName+'</p><p class="des">'+storyList[i].assetCount+' Digital Assets</p></div><div class="story_right"><a href="#"><img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" /><a></div></div></div><div class="story_status"><img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" /><img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" /></div>';
+                sliderDiv+='</li>';
+            }
+            sliderDiv+='</ul>';
+            
+            $('.story_slider').html(sliderDiv);
+            
+            var wWid = parseInt($(window).width()/350,10);
+            
+            
+            _this.slider = $('.story_carousel').bxSlider({ minSlides : 1, maxSlides : wWid,
+    			slideWidth : 350, slideMargin: 10, pager: false,
+    			infiniteLoop : false, moveSlides: 1
+            });
+            
+            var fEl = $('li#story_id_0', _this.slider);
+            _this.populateAssets(fEl);
+        
+            $('li', _this.slider).bind( "click", function(Evt){
+                _this.populateAssets($(this));
+            });
+            $('li', _this.slider).bind('taphold', _this.selectStory);
+        	$(".story_right a").bind("click",function(e){
+    			e.stopPropagation();           
+    			//if($( ".contentHolder .contentHolderUnit").hasClass("current")){
+    				$("#menu_list").empty();
+    				var storyMenu='';
+    				storyMenu+='<div class="arrow-left"></div>';
+    				storyMenu+='<p id="story_name">'+_this.currentStory.storyName+'</p>';
+    				storyMenu+='<li class="list1" id="list1"><a>Play this Story</a></li>';
+    				storyMenu+='<li class="list2" id="list2"><a>Add to Show List</a></li>';
+    				storyMenu+='<li class="list3" id="list3"><a>Delete</a></li>';
+    				$("#menu_list").html(storyMenu);
+    				
+    				var left = $(this).offset().left, top = $(this).offset().top;
+    				left = left + 20;
+    				top = top - 100;
+    				$('#menu_list').css({'top': top + 'px', 'left': left + 'px' });
+    				
+    				$("#menu_list").show();
+    			//}
+    			
+    			
+    			$("#story_part #list1").bind("click", function(e){
+    				if(_this.currentStoryAssets){
+    				   $("#menu_list").hide();
+    				   var iosPlayer1= new iosPlayer({
+    						 assetLists :  _this.currentStoryAssets,
+    						 isStory: true
+    					});
+    				   iosPlayer1.show();
+    				}
+    			});
+    			$("#story_part #list2").bind("click", function(e){
+    				if(_this.currentStoryAssets){
+    					for(var i=0;i<_this.currentStoryAssets.length;i++){
+    						_this.showListAssets.push(_this.currentStoryAssets[i]);
+    					}
+    				}
+    				_this.addToShowList(false);
+    			});             
+           });
+		}
+        
+    
+    },
+    checkShowList: function(storyId) {
+    	/*for(var i = 0; i < 1; i++) {
+    		alert(JSON.stringify(_this.showListAssets[i]));
+    	}
+    	return true;*/
+    },
+    populateAssets : function(el){
+        $("#menu_list").hide();
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        var storyCode=$('.block',el).data('story');
+        com.swaas.hidoctor.edetailing.dao.storyAssetLocalDAO.get(storyCode,function(storyObj){
+             _this.currentStory = storyObj.story;
+             _this.currentStoryAssets = storyObj.assets;
+             _this.displayStoryAssetView();
+        });
+    },
+    selectStory: function( event ){
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        var selectedItem=this.id;
+		var el=$("#"+this.id);
+		if($("img#select",el).is(':visible') == false) {
+			$("img#select",el).show();
+			$("img#not_select",el).hide();
+
+			if(_this.currentStoryAssets){
+			   for(var i=0;i<_this.currentStoryAssets.length;i++){
+				   _this.showListAssets.push(_this.currentStoryAssets[i]);
+			   }
+			   _this.addToShowList(false);
+			}
+		} else {
+			alert('Asset already added to show list');
+		}
+    },
+    displayStoryAssetView: function(){
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        //alert(JSON.stringify(_this.currentStoryAssets));
+        //alert(JSON.stringify(_this.currentStory));
+        $("#display_story").empty();
+		var storyDisplay='';		
+		storyDisplay+='<div class="story_title"><p>'+_this.currentStory.storyName+'</p><p class="assetCount">' + _this.currentStoryAssets.length + ' Digital Assets</p></div><div class="story_sec"><img src="storycarousel/6.jpg" /></div>';
+		
+        if(_this.currentStoryAssets){
+            storyDisplay+='<div class="asset_sec">';
+            storyDisplay+='<div class="jcarousel-wrapper">';
+            storyDisplay+='<div class="jcarousel">';
+            storyDisplay+='<ul id="sortable">';
+            
+            for(var i=0;i<_this.currentStoryAssets.length;i++){
+                storyDisplay+='<li data-assetcode='+_this.currentStoryAssets[i].daCode+'><img class="close_img" id='+_this.currentStoryAssets[i].daCode+' src="../../hidoctor/images/close.png"  /><div class="asset_div"><img class="assetThumb" src="'+_this.currentStoryAssets[i].thumbnailURL+'"/>';
+                if(_this.currentStoryAssets[i].documentType=='IMAGE'){
+                storyDisplay+='<div class="player_block"><img class="player_thumb" src="../../hidoctor/images/image.png" /></div>';
+                }else if(_this.currentStoryAssets[i].documentType=='DOCUMENT'){
+                storyDisplay+='<div class="player_block"><img class="player_thumb" src="../../hidoctor/images/pdf.png" /></div>';
+                }else if(_this.currentStoryAssets[i].documentType=='VIDEO'){
+                 storyDisplay+='<div class="player_block"><img class="player_thumb" src="../../hidoctor/images/playNew.png" /></div>';
+                }
+                storyDisplay+='<p>'+_this.currentStoryAssets[i].name+'</p></div></li>';
+            }
+            storyDisplay+='</ul>';
+            storyDisplay+='<a href="#" class="jcarousel-control-prev">&lsaquo;</a>';
+            storyDisplay+='<a href="#" class="jcarousel-control-next">&rsaquo;</a>';
+            storyDisplay+='</div>';
+            storyDisplay+='</div>';
+            storyDisplay+='</div>';
+        }
+        $("#display_story").append(storyDisplay);
+        /*$('.jcarousel').jcarousel({
+            list: '.jcarousel-list'
+        });*/
+		sliderNew();
+       $( "#sortable" ).sortable({
+            update: function( event, ui ) {_this.createPlayOrder();},
+            handle: ".asset_div" /* Use the draggy handle to move, not the whole row */
+        });
+       
+        
+        $( ".close_img").on( "click", function(Evt){
+            var li=$(this).parent();
+            var deleteCode=li.data('assetcode');
+            for(var i= 0;i<_this.currentStoryAssets.length;i++){
+                if(_this.currentStoryAssets[i].daCode == deleteCode){
+                    _this.currentStoryAssets.splice(i, 1);
+
+                }
+                            
+            }
+             com.swaas.hidoctor.edetailing.dao.storyAssetLocalDAO.remove(_this.currentStory.storyId,deleteCode,function(){
+                    _this.displayStoryAssetView();
+             },null);
+           
+        });
+        
+    },
+    
+    createPlayOrder: function(storyId){
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        var playOrder=new Array();
+        $("#sortable li").each(function(){
+            playOrder.push($(this).data('assetcode'));
+        });
+        for (var i=0;i<playOrder.length;i++){
+            com.swaas.hidoctor.edetailing.dao.storyAssetLocalDAO.updatePlayOrder(_this.currentStory.storyId,playOrder[i],i+1);
+        }
+    },
+    
+    addToShowList: function(showFlag){
+        var _this=com.swaas.hidoctor.edetailing.ui.view.story;
+        var doctor=ED.context.request.selectedDoctor;
+        /*localstorage */
+       /*if(!showFlag){
+           alert("showFlag->"+showFlag);
+            if(localStorage.getItem("doctorPlayList")){
+            var getDoctorPlayLists = JSON.parse(localStorage.getItem("doctorPlayList"));
+               // alert(JSON.stringify(getDoctorPlayLists ));
+            var doctorPlayList = getDoctorPlayLists[doctor.customerCode];
+            if(doctorPlayList && doctorPlayList.length > 0)
+                _this.showListAssets = doctorPlayList;
+            }
+       }else{
+           _this.showListAssets=JSON.parse(localStorage.getItem("doctorPlayList"));
+           
+       }*/
+        //alert(_this.showListAssets.length);
+        if(_this.showListAssets){
+            $("#show_part").empty();
+            var originalArray = {};
+            for ( var i=0; i < _this.showListAssets.length; i++ ){
+                originalArray[_this.showListAssets[i]['daCode']] = _this.showListAssets[i];
+            }
+            _this.showListAssets = new Array();
+            for ( var key in originalArray )
+                _this.showListAssets.push(originalArray[key]);
+            var showList='';
+            showList+='<div class="show_header"><label>Show List</label><div class="play" id="play_asset">Play</div></div>';
+            showList+='<ul>';
+            //alert(_this.showListAssets.length);
+            if(_this.showListAssets.length>0){
+            for(var i=0;i<_this.showListAssets.length;i++){
+                showList+='<li data-showcode='+_this.showListAssets[i].daCode+'><div class="asset_name">'+_this.showListAssets[i].name+'</div><div class="asset_type">'+_this.showListAssets[i].documentType+'</div><img class="delete_img" src="../../hidoctor/images/close.png" /></li>';
+            }
+            }else{
+                
+                showList+='<li class="no_list">No Assets</li>';
+            }
+           showList+='</ul>';
+            $("#show_part").append(showList);
+            $("#menu_list").hide();
+            $( ".delete_img").on( "click", function(Evt){
+                var li=$(this).parent();
+                var deleteCode=li.data('showcode');               
+                for(var i= 0;i<_this.showListAssets.length;i++){
+                    if(_this.showListAssets[i].daCode == deleteCode){
+                        _this.showListAssets.splice(i, 1);
+                    }
+                }
+                _this.addToShowList();
+                                
+            });
+            // var playListArray ={};
+            /*alert(JSON.stringify(_this.showListAssets));
+            _this.playListArray[doctor.customerCode]=_this.showListAssets;
+            alert(_this.playListArray);
+            localStorage.setItem("doctorPlayList",JSON.stringify(_this.playListArray));*/
+            //alert(localStorage.getItem("doctorPlayList"));
+            
+        }
+        $("#play_asset").on("click",function(e){
+            var iosPlayer1= new iosPlayer({
+                  assetLists :  _this.showListAssets,
+                  isStory: true
+            });
+            iosPlayer1.show();
+        });       
+    },
+    
+        //asset like,dislike and rating
+    assetLike: function(currentasset,like) {
+        //alert(like);
+        //var value = ED.context.dummay.value;
+        var liked = '0';
+        var disliked = '0';
+        if(like){
+            liked = '1';
+        }else{
+            disliked = '1';
+        }
+        var analytics = null;
+        var doctor = ED.context.request.selectedDoctor;
+        var user = ED.context.currentUser;
+        analytics = {
+        companyCode: user.companyCode,
+        daCode: currentasset.daCode,
+        doctorCode: doctor.customerCode,
+        doctorRegionCode: doctor.regionCode,
+        userCode: user.userCode,
+        userRegionCode: user.regionCode,
+        like: liked,
+        dislike: disliked,
+        rating: "0",
+        dateTime: new Date(),
+        tagDescription: "",
+            productCode : currentasset.productCode
+            
+        };
+        saveAnalytics(analytics, function(){
+                      $('.like,.dislike').hide();
+                      $('#likeDislikeThankyou').show();
+                      // $('.hideAfterLike').hide();
+                      ED.setValue($("#likeDislikeThankyou"), com.swaas.hidoctor.edetailing.ui.view.Resource.story.likeDislikeThankyou);
+                      });
+    },
+        
+    insertRatingAnalytics: function(currentasset,rating) {
+        //var value = ED.context.dummay.value;
+        var analytics = null;
+        var doctor = ED.context.request.selectedDoctor;
+        var user = ED.context.currentUser;
+        
+        analytics = {
+        companyCode: user.companyCode,
+        daCode: currentasset.daCode,
+        doctorCode: doctor.customerCode,
+        doctorRegionCode: doctor.regionCode,
+        userCode: user.userCode,
+        userRegionCode: user.regionCode,
+        like: "0",
+        dislike: "0",
+        rating: rating,
+        dateTime: new Date(),
+        tagDescription: "",
+            productCode : currentasset.productCode
+            
+        };
+        saveAnalytics(analytics, function(analyticsId){
+                      //$('#inputRatingDisplay').html('');
+                      //$('#inputRatingDisplay').hide();
+                      $('#ratingThankyou').show();
+                      //com.swaas.hidoctor.edetailing.ui.view.Rating.setRating($('#inputRatingDisplay'), analytics.rating, true);
+                      ED.setValue($("#ratingThankyou"), com.swaas.hidoctor.edetailing.ui.view.Resource.story.ratingThankyou);
+                      });
+    },
+    onTagAdded: function(currentasset,tag, assetCode, onSuccess) {
+        //var value = ED.context.dummay.value;
+        var analytics = null;
+        var doctor = ED.context.request.selectedDoctor;
+        var user = ED.context.currentUser;
+        
+        analytics = {
+        companyCode: user.companyCode,
+        daCode: assetCode,
+        doctorCode: doctor.customerCode,
+        doctorRegionCode: doctor.regionCode,
+        userCode: user.userCode,
+        userRegionCode: user.regionCode,
+        like: "0",
+        dislike: "0",
+        rating: "0",
+        dateTime: new Date(),
+        tagDescription: tag,
+            productCode : currentasset.productCode
+            
+        };
+        
+        //return
+        saveAnalytics(analytics, onSuccess);
+    },
+    onNewTagAdded: function(tag){
+        
+        //var value = ED.context.dummay.value;
+        if(tag != null && tag != ''){
+            com.swaas.hidoctor.edetailing.service.AssetService.persistNewTag(tag);
+        }
+    },
+    
+    deleteAnalytics: function(daTagAnalyticId){
+        
+        //var value = ED.context.dummay.value;
+        if(daTagAnalyticId != null){
+            com.swaas.hidoctor.edetailing.service.AssetService.deleteAnalytics(daTagAnalyticId);
+        }
+    },
+    backFromDocOpen : function(docOpenDeatils){
+        var _this = com.swaas.hidoctor.edetailing.ui.view.story; 
+        alert(JSON.stringify(docOpenDeatils));
+        if(docOpenDeatils.docOpen == true){    
+			var d = new Date();
+			docOpenDeatils.docOpen = false;
+			var documentViewTime =(d.getTime()-docOpenDeatils.openTime);
+			console.log(d.getTime()-docOpenDeatils.openTime);
+            com.swaas.hidoctor.edetailing.service.AssetService.updateAssetBilling(docOpenDeatils.daBillingId, documentViewTime,function(){
+				docOpenDeatils.openTime = 0;
+            },null)
+			
+		}
+    },
+    
+    assetClicked: function(asset,onSuccess) {
+        com.swaas.hidoctor.edetailing.ui.view.story.clickedAsset = asset;
+        com.swaas.hidoctor.edetailing.ui.view.story.playOrOpenAsset(onSuccess);
+    },
+    playOrOpenAsset : function(onPlayOrOpenAsset) {
+    	var currentAsset=com.swaas.hidoctor.edetailing.ui.view.story.clickedAsset;
+		var isConnected = com.swaas.hidoctor.edetailing.net.CoreNET.isConnected();
+		var documentType = currentAsset.documentType;
+        //alert(documentType);
+        if (com.swaas.hidoctor.edetailing.ui.view.story.clickedAsset.downloaded != 'Y' && isConnected == false){
+			if(documentType == 'VIDEO'){
+				alert(com.swaas.hidoctor.edetailing.ui.view.Resource.networkMessage.video);
+			}else {
+				alert(com.swaas.hidoctor.edetailing.ui.view.Resource.networkMessage.document);
+			}
+			return;
+		}
+		var _this = com.swaas.hidoctor.edetailing.ui.view.story;
+        _this.populateAssetBilling(function(daBillingId){
+            _this.populateDCRAnalyticalData(function(){
+                 onPlayOrOpenAsset(daBillingId,_this.docOpenDeatils);
+            });
+        });
+        
+	},
+    populateAssetBilling: function(onGetAssetBillingID){
+        //alert('before pouplate asset billing maproductCodein function');
+        //var value = ED.context.dummay.value;
+        var billingId = null;
+        var currentAsset = com.swaas.hidoctor.edetailing.ui.view.story.clickedAsset;
+        var doctor = com.swaas.hidoctor.edetailing.ui.view.eDetailing.doctor; 
+        com.swaas.hidoctor.edetailing.service.UserService.getCurrentUser(function(user){
+        	com.swaas.hidoctor.edetailing.service.UserService.getUserDivision(user.userCode, function(division){ 
+				com.swaas.hidoctor.edetailing.ui.view.story.selectedProduct={"productCode":null,"productName":null};
+				var selectedProduct = com.swaas.hidoctor.edetailing.ui.view.story.selectedProduct;
+				var selectedDate = ED.context.selectedDate;
+				var offline = 0;
+				var online  = 0;
+				if(currentAsset.downloaded == 'Y'){
+					offline = 1;
+				}else{
+					online = 1;
+				}
+				if (division == null){
+					division = {};
+				}
+				if (selectedProduct == null){
+					selectedProduct = {};
+				}
+				if (doctor == null){
+					doctor = {};
+				}
+
+				if (selectedDate == null){
+					selectedDate = new Date();
+				}
+				
+				var position = ED.getGeoLocation();
+				var assetBilling = {
+					companyCode: user.companyCode,
+					daCode: currentAsset.daCode,
+					userCode:user.userCode,
+					userName: user.userName,
+					regionCode: user.regionCode,
+					regionName: user.regionName,
+					divisionCode: division.divisionCode,
+					divisionName: division.divisionName,
+					dateTime: new Date(),
+					offlineClick: offline,
+					downloaded: 0,
+					onlinePlay: online,
+					dcrActualDate: selectedDate,
+					productCode: selectedProduct.productCode,
+					productName: selectedProduct.productName,
+					doctorCode: doctor.customerCode,
+					doctorRegionCode: doctor.regionCode,
+					latitude : position.coords.latitude,
+					longitude : position.coords.longitude,
+					geoAddress : position.geoAddress
+				};
+				com.swaas.hidoctor.edetailing.service.AssetService.insertAssetBilling(assetBilling, function(assetBilling){
+					billingId = assetBilling.daBillingId;
+					if(onGetAssetBillingID) onGetAssetBillingID(billingId);
+				}, null);
+			}, null);
+        },null);
+    },
+    populateDCRAnalyticalData: function(onPopulatDCRFinish){
+        var doctor = ED.context.request.selectedDoctor;
+        var dcrActualDate =  new Date();
+        doctorVisitTime = new Date();
+        dcrActualDate = com.swaas.hidoctor.edetailing.util.DateUtil.scrapTime(dcrActualDate);
+        var analyticsProduct = {
+        dcrActualDate: dcrActualDate,
+            doctorCode : doctor.customerCode ,
+        doctorRegionCode: doctor.regionCode,
+        productCode: com.swaas.hidoctor.edetailing.ui.view.story.selectedProduct.productCode
+        };
+        com.swaas.hidoctor.edetailing.service.DCRService.saveAnalyticsDetailedData(analyticsProduct, onPopulatDCRFinish);
+    }
+};
+

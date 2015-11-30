@@ -1,0 +1,691 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet"
+	href="../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+<link rel="stylesheet" href="../view/Style.css" />
+
+<script type="text/javascript" charset="utf-8" src="../cordova-2.6.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/core/DateFormat.js"></script>
+<script type="text/javascript" charset="utf-8" src="../view/core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/core/CoreNET.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestUserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestUserRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/AccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/AccompanistRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestAccompanistRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/UserDivisionLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestUserDivisionLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/UserDivisionRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestUserDivisionRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/configuration/ConfigurationLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/configuration/TestConfigurationLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/configuration/ConfigurationRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/configuration/TestConfigurationRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPHeaderRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPHeaderRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPAccompanistRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPDoctorRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPDoctorRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/tourplan/TPSFCRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/tourplan/TestTPSFCRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/speciality/TestSpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/speciality/SpecialityRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/speciality/TestSpecialityRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/brand/BrandLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/brand/TestBrandLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/brand/BrandRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/brand/TestBrandRemoteDAO.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/ProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/DigitalAssetResultLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestDigitalAssetResultLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestUserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/UserProductMappingRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestUserProductMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/doctor/DoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/doctor/TestDoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/doctor/DoctorCategoryRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/doctor/TestDoctorCategoryRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/customer/CustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/customer/TestCustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/customer/CustomerRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/customer/TestCustomerRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/UniqueProductCodeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestUniqueProductCodeLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/CompetitorProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestCompetitorProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/ProductsByUserProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestProductsByUserProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/SalesProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestSalesProductRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/doctor/McDoctorsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/doctor/TestMcDoctorsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/doctor/McDoctorsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/doctor/TestMcDoctorsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRMasterRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/DigitalAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestDigitalAssetLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/dcr/DCRService.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/doctor/DoctorService.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/AssetResultLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestAssetResultLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/DenormAssetQueryInputsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestDenormAssetQueryInputsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/DenormAssetQueryInputsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestDenormAssetQueryInputsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/user/SelectedAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/user/TestSelectedAccompanistLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDoctorVisitDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRConfigSettingsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRConfigSettingsDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRConfigSettingsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRConfigSettingsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRPrivilegeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRPrivilegeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRPrivilegeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRPrivilegeRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRHeaderLocalDAO.js"></script>
+//for remote testing
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/AnalyticsDetailedProductsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestAnalyticsDetailedProductsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/AnalyticsDoctorVisitRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestAnalyticsDoctorVisitRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DoctorVisitRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDoctorVisitRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DcrDoctorAccompanistRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDcrDoctorAccompanistRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRDetailedProductsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRDetailedProductsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRProductDetailsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRProductDetailsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/ChemistVisitRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestChemistVisitRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/RcpaDetailsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestRcpaDetailsRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRHeaderAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRHeaderAccompanistLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRDoctorAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRDoctorAccompanistLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRDetailedProductsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRDetailedProductsLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/division/DivisionEntityMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/division/TestDivisionEntityMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/division/DivisionEntityMappingRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/division/TestDivisionEntityMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestDCRProductDetailsDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/attendance/ActivityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/attendance/TestActivityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/attendance/ActivityMasterRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/attendance/TestActivityMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/attendance/ExpenseEntityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/attendance/TestExpenseEntityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/attendance/ExpenseEntityMasterRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/attendance/TestExpenseEntityMasterRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/attendance/TimeSheetEntryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/attendance/TestTimeSheetEntryLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/AnalyticsDetailedProductsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestAnalyticsDetailedProductsLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/AnalyticsDoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestAnalyticsDoctorVisitLocalDAO.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/ChemistVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestChemistVisitDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/dcr/RcpaDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/dcr/TestRcpaDetailsDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/SaleProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestSaleProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/product/SaleProductMappingRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/product/TestSaleProductMappingRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/AssetMarketingAnalysisLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestAssetMarketingAnalysisLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/log/ErrorLogLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/log/TestErrorLogLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/synchronize/SynchronizeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/synchronize/TestSynchronizeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/synchronize/TestSynchronizeRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/entity/asset/DigitalAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/entity/asset/TestDigitalAssetRemoteDAO.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8" src="../service/dcr/DCRService.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="view/downloadEDocument/ProductTestData.js"></script>
+
+<!--  Synchronize -->
+<script type="text/javascript" charset="utf-8" src="../service/synchronize/SynchronizeService.js"></script>
+<link rel="stylesheet" type="text/css" href="../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.css" />
+<script type="text/javascript" src="../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.js"></script>
+
+<!-- Doctor List -->
+<script type="text/javascript" charset="utf-8" src="../view/dcr/dcrNew.js"></script>
+<script type="text/javascript" charset="utf-8" src="../view/doctor/doctorList.js"></script>
+<script type="text/javascript" charset="utf-8" src="view/doctor/DoctorTestData.js"></script>
+<script type="text/javascript" charset="utf-8" src="../view/doctor/TPDoctorsView.js"></script>
+<script type="text/javascript" charset="utf-8" src="../view/doctor/MyDoctorsView.js"></script>
+<script type="text/javascript" charset="utf-8" src="../view/doctor/AccompanistDoctorsView.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../service/product/ProductCategorySyncService.js"></script>
+<script type="text/javascript" charset="utf-8" src="service/product/TestProductCategorySyncService.js"></script>
+
+<script>
+ function networkStatus(){
+	 var network = {};
+	 network.status = com.swaas.hidoctor.edetailing.net.CoreNET.isConnected();
+	 network.signalStrength = com.swaas.hidoctor.edetailing.net.CoreNET.getSignalStrength();
+	 alert(JSON.stringify(network));
+ }
+ 
+ function activityStartAndStop(){
+	 navigator.notification.activityStart("Loading some url....", "loading");
+	 setTimeout(function loadMyUrl(){
+         navigator.notification.activityStop();
+         }, 5000 ); 
+
+ }
+ 
+  function dcrTesting(){
+	  
+	  var result = com.swaas.hidoctor.edetailing.service.DCRService.getDcrDoctors(new Date());
+	  alert(JSON.stringify(result)); 
+  }
+ var ids = [];
+ ids.push(1634);
+ var outputIds = com.swaas.hidoctor.edetailing.dao.DigitalAssetRemoteDAO.getRetired(1, 'COM00000068', 'USC00000045', ids);
+ alert(JSON.stringify(outputIds));
+ </script>
+<title>Insert title here</title>
+</head>
+<body>
+ <div data-role="page" id="home-page">
+ <div data-role="content">
+  
+ <br/>
+ <h1>UI Testing</h1>
+  <input type="button" onclick="activityStartAndStop();" value="Activity Start & Stop">&nbsp;<br/>
+  
+  <input type="button" onclick="dcrTesting();" value="DCR doctors">&nbsp;<br/>
+ 
+ <input type="button" onclick="ED.redirect('view/error/networkUnavailable.html');" value="Error Page">&nbsp;<br/>
+ 
+ <input type="button" onclick="ED.redirect('view/synchronize/prepareMyTablet.html');" value="Sync. Data">&nbsp;<br/>
+ 
+  <input type="button" onclick="networkStatus();" value="Network status">&nbsp;&nbsp;
+   <input type="button" onclick="ED.redirect('view/calendar/calendar.html');" value="View Calendar">&nbsp;&nbsp;
+  
+  <input type="button" onclick="com.swaas.hidoctor.edetailing.ui.view.DoctorTestData.create();" value="Prepare Test Data For TP Doctors">&nbsp;&nbsp;
+  <input type="button" onclick="ED.redirect('view/doctor/tpDoctorsView.html?tpId=TP001');" value="TP Doctor View">&nbsp;&nbsp;
+  <input type="button" onclick="ED.redirect('view/doctor/MyDoctorsView.html');" value="My Doctors View">&nbsp;&nbsp;
+  <input type="button" onclick="ED.redirect('view/doctor/AccompanistDoctorsView.html');" value="Accompanist View">&nbsp;&nbsp;
+  <input type="button" onclick="ED.redirect('view/dcr/dcrNew.html');" value="DCR Screen">&nbsp;&nbsp;
+  <br/>
+  
+  <input type="button" onclick="ED.redirect('view/downloadedocument/downloadEDocument.html');" value="Download E-Document">&nbsp;&nbsp;
+
+
+ <h1>DAO Testing</h1>
+ 
+ User:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserLocalDAO.testRemoveAll();">Remove All</a>&nbsp;&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserRemoteDAO.testGet();">Remote Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserRemoteDAO.testLogin();">Login</a>&nbsp;<br/> 
+ 
+ Accompanist:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAccompanistLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAccompanistLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAccompanistLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAccompanistLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAccompanistLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAccompanistRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ User Division:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserDivisionLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserDivisionLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserDivisionLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserDivisionLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserDivisionLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserDivisionRemoteDAO.testGet();">Get Remote</a><br/>
+
+ Configurtion:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestConfigurationLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestConfigurationLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestConfigurationLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestConfigurationLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestConfigurationRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ TP Header:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPHeaderLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPHeaderLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPHeaderLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPHeaderLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPHeaderLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPHeaderRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ TP Accompanist:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPAccompanistLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPAccompanistLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPAccompanistLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPAccompanistLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPAccompanistLocalDAO.testRemoveAll();">Remove All</a><br/>
+ 
+ TP Doctor:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPDoctorLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPDoctorLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPDoctorLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPDoctorLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPDoctorLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPDoctorRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ TP Product:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPProductLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPProductLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPProductLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPProductLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPProductLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPProductRemoteDAO.testGet();">Get Remote</a>&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.service.TestProductCategorySyncService.testGetRemote();">Get Product Category Remote</a><br/>
+ 
+ TP SFC:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPSFCLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPSFCLocalDAO.testGetByTPId();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPSFCLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPSFCLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTPSFCRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ Speciality:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSpecialityLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSpecialityLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSpecialityLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSpecialityLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSpecialityLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSpecialityRemoteDAO.testGet();">Get Remote</a><br/>
+
+ Brand:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestBrandLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestBrandLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestBrandLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestBrandLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestBrandLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestBrandRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ Product:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductLocalDAO.testRemove();">Remove</a>
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductRemoteDAO.testGet();">Get Remote</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductRemoteDAO.testGetHasAssets();">Get Products Has Assets</a><br/>
+
+Latest Changes<br></br>
+
+UpSync AnalyitcsDetailedProducts Remote Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDetailedProductsRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync AnalyitcsDoctorVisit Remote Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDoctorVisitRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync DoctorVistRemote Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorVisitRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync DCRDoctorAccompanist Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDoctorAccompanistRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync DCRDetailedProducts Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDetailedProductsRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync DCR ProductDetails Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRProductDetailsRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync DCR Chemsits Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestChemistVisitRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+UpSync DCR Rcpa Testing :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestRcpaDetailsRemoteDAO.testSyncPut();">Sync Put</a>&nbsp;<br></br>
+
+
+Competitor Products :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCompetitorProductRemoteDAO.testGet();">Get Remote</a>&nbsp;
+
+ProductsByUserProduct :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestProductsByUserProductRemoteDAO.testGet();">Get Remote</a>&nbsp;
+
+Sales Product :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSalesProductRemoteDAO.testGet();">Get Remote</a>&nbsp;<br></br> 
+
+Attendance : &nbsp;&nbsp;<br></br>
+
+Activity Master :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestActivityMasterLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestActivityMasterLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestActivityMasterLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestActivityMasterLocalDAO.testGetAll();">GetAll</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestActivityMasterLocalDAO.testRemove();">Remove</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestActivityMasterRemoteDAO.testGet();">GetRemote</a>&nbsp;<br/>
+
+Expense Entity Master :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestExpenseEntityMasterLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestExpenseEntityMasterLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestExpenseEntityMasterLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestExpenseEntityMasterLocalDAO.testGetAll();">GetAll</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestExpenseEntityMasterLocalDAO.testRemove();">Remove</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestExpenseEntityMasterRemoteDAO.testGet();">GetRemote</a>&nbsp;<br/>
+
+Time Sheet Entity :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTimeSheetEntryLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTimeSheetEntryLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTimeSheetEntryLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestTimeSheetEntryLocalDAO.testRemove();">Remove</a>&nbsp;<br/>
+
+
+DCR Analytics Doctor Visit :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDoctorVisitLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDoctorVisitLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDoctorVisitLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDoctorVisitLocalDAO.testRemove();">Remove</a>&nbsp;<br/>
+
+DCR Analytics Detailed Products :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDetailedProductsLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDetailedProductsLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAnalyticsDetailedProductsLocalDAO.testRemove();">Remove</a>&nbsp;<br/> 
+ 
+DCR Header :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderLocalDAO.testRemove();">Remove</a>&nbsp;<br/>
+
+DCR Header Accompanist :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderAccompanistLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderAccompanistLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderAccompanistLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRHeaderAccompanistLocalDAO.testRemove();">Remove</a>&nbsp;<br/>
+
+DCR Doctor Accompanist :&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDoctorAccompanistLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDoctorAccompanistLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDoctorAccompanistLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDoctorAccompanistLocalDAO.testRemove();">Remove</a>&nbsp;<br/>
+
+DCR Detailed Products : &nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDetailedProductsLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDetailedProductsLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDetailedProductsLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRDetailedProductsLocalDAO.testRemove();">Remove</a>&nbsp;<br/>
+
+ Asset Info:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetResultLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetResultLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetResultLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetResultLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetResultLocalDAO.testRemoveAll();">Remove All</a><br/>
+
+ User Product Mapping:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserProductMappingLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserProductMappingLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserProductMappingLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserProductMappingLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUserProductMappingRemoteDAO.testGet();">Get Remote</a><br/>
+
+ Doctor Category:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorCategoryLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorCategoryLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorCategoryLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorCategoryLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorCategoryLocalDAO.testRemoveAll();">Remove All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorCategoryRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ Customer:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCustomerLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCustomerLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCustomerLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCustomerLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCustomerLocalDAO.testRemoveAll();">RemoveAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestCustomerRemoteDAO.testGet();">Get Remote</a><br/>
+  
+ Unique Product Code:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUniqueProductCodeLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUniqueProductCodeLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestUniqueProductCodeLocalDAO.testRemove();">Remove</a><br/>
+
+
+ Mc Doctors:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestMcDoctorsLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestMcDoctorsLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestMcDoctorsLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestMcDoctorsRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ Division Entity Mapping:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDivisionEntityMappingLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDivisionEntityMappingLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDivisionEntityMappingLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDivisionEntityMappingLocalDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDivisionEntityMappingLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDivisionEntityMappingRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+DCR Configurtion:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRConfigSettingsLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRConfigSettingsLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRConfigSettingsLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRConfigSettingsLocalDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRConfigSettingsLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRConfigSettingsRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ DCR Privilege:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRPrivilegeLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRPrivilegeLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRPrivilegeLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRPrivilegeLocalDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRPrivilegeLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRPrivilegeRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ DCR Master:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRMasterLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRMasterLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRMasterLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRMasterLocalDAO.testRemoveAll();">RemoveAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRMasterRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ Asset:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetLocalDAO.testRemove();">Remove</a><br/>
+ 
+ DenormAssetQueryInput:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDenormAssetQueryInputsLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDenormAssetQueryInputsLocalDAO.testGetAll();">Get All</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDenormAssetQueryInputsLocalDAO.testRemoveAll();">RemoveAll</a>&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDenormAssetQueryInputsRemoteDAO.testGet();">Get Remote</a><br/>
+ 
+ 
+ 
+ AssetResult:&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetResultLocalDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetResultLocalDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetResultLocalDAO.testGet();">Get</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetResultLocalDAO.testRemove();">Remove</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetResultLocalDAO.testRemoveAll();">RemoveAll</a><br/>
+
+ Selected Accompanist:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSelectedAccompanistLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSelectedAccompanistLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSelectedAccompanistLocalDAO.testRemove();">Remove</a><br/>
+ 
+  DCR Doctor Visit:&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorVisitDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorVisitDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorVisitDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorVisitDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDoctorVisitDAO.testRemoveAll();">RemoveAll</a><br/>
+
+  DCR Product Details:&nbsp;&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRProductDetailsDAO.testInsert();">Insert</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRProductDetailsDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRProductDetailsDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRProductDetailsDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDCRProductDetailsDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+  DCR Chemist Visit:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestChemistVisitDAO.testInsert();">Insert</a>&nbsp; 
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestChemistVisitDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestChemistVisitDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestChemistVisitDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestChemistVisitDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+  DCR RCPA Details:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestRcpaDetailsDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestRcpaDetailsDAO.testUpdate();">Update</a>&nbsp;
+<a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestRcpaDetailsDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestRcpaDetailsDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestRcpaDetailsDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+ Sale Product Mapping:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSaleProductMappingLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSaleProductMappingLocalDAO.testGetAll();">GetAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSaleProductMappingLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSaleProductMappingLocalDAO.testRemoveAll();">RemoveAll</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSaleProductMappingRemoteDAO.testGet();">Get Remote</a><br/>
+
+ Asset Marketing:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetMarketingAnalysisLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetMarketingAnalysisLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetMarketingAnalysisLocalDAO.testUpdate();">Update</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetMarketingAnalysisLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestAssetMarketingAnalysisLocalDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+ Synchronize:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSynchronizeLocalDAO.testUpdateStatusTrue();">Update True</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSynchronizeLocalDAO.testUpdateStatusFalse();">Update False</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSynchronizeLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSynchronizeLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestSynchronizeRemoteDAO.testStartAndEndSync();">Start and End Sync</a><br/>
+  
+  AnalyticHistory:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDAAnalyticHistoryLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDAAnalyticHistoryLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDAAnalyticHistoryLocalDAO.testRemove();">Remove</a><br/>
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDAAnalyticHistoryLocalDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+  Analytics:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagAnalyticLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagAnalyticLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagAnalyticLocalDAO.testRemove();">Remove</a><br/>
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagAnalyticLocalDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+  Tag:&nbsp;&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagMasterLocalDAO.testInsert();">Insert</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagMasterLocalDAO.testGet();">Get</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagMasterLocalDAO.testUpdate();">Update </a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagMasterLocalDAO.testRemove();">Remove</a>&nbsp;
+ <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDATagMasterLocalDAO.testRemoveAll();">RemoveAll</a><br/>
+ 
+ 
+ Digital Asset:&nbsp;&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetRemoteDAO.testGet();">Get Remote</a>&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestDigitalAssetRemoteDAO.testGetSync();">Get Sync.</a><br/>
+ 
+ Error Logging:&nbsp;&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestErrorLogLocalDAO.testInsert();">Insert</a>&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestErrorLogLocalDAO.testGet();">Get</a>&nbsp;
+  <a href="#" onclick="com.swaas.hidoctor.edetailing.dao.TestErrorLogLocalDAO.testGetAll();">GetAll</a>&nbsp;
+  
+   </div>
+ </div>
+</body>
+</html>

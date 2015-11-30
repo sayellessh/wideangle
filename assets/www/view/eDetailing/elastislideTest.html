@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<title>Elastislide - Test</title>
+<!-- jQuery Mobile -->
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+
+ <!-- Tag it -->
+<script type="text/javascript" charset="utf-8" src="../tagedit/js/jquery-ui-1.8.autocomplete.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../tagedit/js/tag-it2.js"></script>
+<link rel="stylesheet"	href="../tagedit/css/jquery.ui.autocomplete.custom.css" />
+
+<script type="text/javascript">
+	function load() {
+		  var availableTags = ['Good Video','Bad Video','Good Doctor','Bad Doctor'];
+		
+			var options = {};
+			options["availableTags"] = availableTags;
+			if(availableTags.length > 0){
+				$("#mytags").tagit(options);
+			}
+			
+		
+			var tags = $('#listViewTag');
+					tags.bind('liAdded',  function(event, li){
+						var partxt = $(li).text();
+						 partxt = partxt.trim();
+						 $(li).attr("id", "myId");
+						 //alert(partxt);
+					});
+					tags.bind('liRemoved', function(event, li){
+						 var partxt = $(li).text();
+						 partxt = partxt.substring(0,(partxt.length-3)).trim();
+						 alert ("Removing " + li.id)
+					});
+					
+			}
+</script>
+</head>
+
+<body onload="load();">
+	<div data-role="page" id="page-download" class="type-interior"
+		data-theme="a">
+		<ul id="mytags" class='myclass'></ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.slider-next {
+	position: absolute;
+	background: #ddd url(./nav.png) no-repeat 4px 3px;
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	text-indent: -9000px;
+	cursor: pointer;
+	opacity: 0.8;
+	margin-top: -11px;
+	background-position: 4px -17px;
+}
+
+
+.slider-previous {
+	position: absolute;
+	background: #ddd url(./nav.png) no-repeat 4px 3px;
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	text-indent: -9000px;
+	cursor: pointer;
+	opacity: 0.8;
+	margin-top: -11px;
+}

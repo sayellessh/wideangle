@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>		
+<!-- Error Page -->
+<script type="text/javascript" charset="utf-8" 
+	src="networkUnavailable.js"></script>
+<!-- checking internet -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+</head>
+<script>
+document.addEventListener("deviceready", com.swaas.hidoctor.edetailing.ui.view.NetworkUnavailable.init, false);
+</script>
+
+<body>
+	<div data-role="page" id="page-login" class="type-interior"
+		data-theme="a">
+		<div id="header">		
+		</div>
+		
+		<h2><label id="errorCaption"></label></h2>
+		<br/>
+		<div id="progressDiv" class="ui-bar-b">
+			<br/>
+				<label id="errorMessage"></label>
+			<br/>
+			<div align="right" id="buttonDiv">
+				<a href="#" id="continueButton" onclick="ED.quit();" 
+					data-role="button" 
+					data-mini="true" data-inline="true">Quit</a>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

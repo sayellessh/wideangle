@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Examples | Responsive jQuery Slider | bxSlider</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="Content-type" name="viewport"
+			content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+		<!-- jQuery Mobile -->
+		<link rel="stylesheet"
+			href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+		<script type="text/javascript" charset="utf-8"
+			src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" charset="utf-8"
+			src="../../jquery.mobile/jquery.mobile-1.3.1.js"></script>
+		<!-- PhoneGap -->
+		<script type="text/javascript" charset="utf-8"
+			src="../../cordova-2.6.0.js"></script>
+		
+	</head>
+	<body>
+		<iframe id="frame" src="" width="100%" height="100%"></iframe>		
+		<script type="text/javascript"> alert(42);
+			alert(window.localStorage.getItem('url'));
+			document.addEventListener('deviceready', function(){
+				$('#frame').attr('src', localStorage.getItem("url"));
+			}, false);
+		</script>
+	</body>
+</html>

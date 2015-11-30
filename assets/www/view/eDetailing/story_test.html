@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<style type="text/css">
+	/* Carousel changes for story */
+	body {
+		background-color: #d9d9d9;
+	}
+	p {
+		margin: 0px; 
+	}
+	.story_carousel li {
+		position: absolute;
+		height:200px;
+		width: 350px;
+		list-style: none;
+		border-radius: 4px;
+	}
+	.story_carousel li > img {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		border-radius: 4px;
+	}
+	.story_carousel li .block {
+		padding: 3px;
+		position: relative;
+		text-align: center;
+	}
+	.story_carousel li .block > img {
+		max-width: 100%;
+		height: 117px;
+	}
+	.story_carousel li .block .story_detl {
+		float: left;
+		border-top: 3px solid #000;
+		text-align: left;
+		width: 100%;
+	}
+	.story_carousel li .block .story_left {
+		float: left;
+		width: 275px;
+		padding: 10px 10px;
+	}
+	.story_carousel li .block .story_left p {
+		color:#000;
+	    font-size: 14px;
+	    font-family: "Arial";
+	    line-height: 20px;
+	    font-weight: bold;
+	}
+	.story_carousel li .block .story_left p.des {
+		color: #757575;
+		font-weight: normal;
+	}
+	.story_carousel li .block .story_right {
+		float: right;
+		width: 45px;
+		text-align: right;
+		padding-top: 5px;
+	}
+	.story_carousel .story_status {
+		position: absolute;
+		top: 0px;
+		right: 12px;
+	}
+</style>	
+</head>
+
+<ul class="story_carousel"> 
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+	<li>
+		<img src="storycarousel/frame.jpg" />
+		<div class="block" data-story="'+storyList[i].storyId+'">
+			<img src="storycarousel/6.jpg" alt=""/>
+			<div class="story_detl">
+				<div class="story_left">
+					<p>StoryName</p>
+					<p class="des">5 Digital Assets</p>
+				</div>
+				<div class="story_right">
+					<a href="#" title="">
+						<img id="menu_img" class="menu_img" src="../../hidoctor/images/Expand.png" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="story_status">
+			<img class="tickimg" id="not_select" src="../../hidoctor/images/Not_Selected_Asset.png" />
+			<img class="tickimg" id="select" style="display:none" src="../../hidoctor/images/Selected_Asset.png" />
+		</div> 
+	</li>
+</ul>
+<!-- jQuery library (served from Google) -->
+<script src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="bxslider/jquery.bxslider.min.js"></script>
+<!-- bxSlider CSS file -->
+<link href="bxslider/jquery.bxslider.css" rel="stylesheet" />
+<script type="text/javascript">
+$(document).ready(function(){
+	var sld = $('.story_carousel').bxSlider({
+		minSlides : 1,
+		maxSlides : 3,
+		slideWidth : 350,
+		slideMargin: 10,
+		pager: false,
+		moveSlides: 1
+	});
+	console.log(sld.getCurrentSlide());
+});
+</script>
+<body>
+
+</html>

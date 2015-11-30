@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>
+    
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>	
+<script type="text/javascript" charset="utf-8" src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+
+<!-- Login -->
+<script type="text/javascript" charset="utf-8" src="login.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+
+</head>
+<script>
+document.addEventListener("deviceready", com.swaas.hidoctor.edetailing.ui.view.Login.init, false);
+</script>
+
+<body>
+	<div data-role="page" id="page-login" class="type-interior">
+		<div>
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 60%; border: 0px">&nbsp;</td>
+					<td><label id="lblWelcomeTo" style="font-color: black !important;"></label></td>
+				</tr>
+				<tr>
+					<td style="width: 60%; border: 0px">&nbsp;</td>
+					<td style="border: 0px">
+					<div style="position: relative; display: inline-block;">
+							<img height="90px" width="128px" src="../../hidoctor/images/wide-angle-logo.png" />
+							<span id="versionText"
+								style="color: White; font-size: 12px; position: absolute;top: 70px;padding-left: 70px;white-space: nowrap;"></span>
+					</div>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<div align="center" class="ui-bar-b">
+			<form id="frmLogin">
+				<div id="content" style="display:none">
+					<table>
+						<tr>
+							<td style="border: 0px; align: right" nowrap="nowrap"><label
+								id="lblUserId"></label></td>
+							<td style="border: 0px; padding-left: 10px"><input
+								type="text" id="userId" value="" data-mini="true" /></td>
+							<td style="border: 0px; padding-left: 10px">
+								<label id="lblURL"></label></td>
+							<td style="border: 0px;"><input
+								type="text" id="url" value="" data-mini="true" /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td align="center" nowrap="nowrap" align="center"><label
+								id="lblUserIdExample" style="font-size: 10pt;"></label></td>
+							<td align="center" nowrap="nowrap" colspan="2"  align="center"><label
+								id="lblURLExample" style="font-size: 10pt;"></label></td>
+						</tr>
+						<tr>
+							<td style="border: 0px; align: right" nowrap="nowrap"><label
+								id="lblPassword"></label></td>
+							<td style="border: 0px; padding-left: 10px"  colspan="3"><input
+								type="password" id="password" value="" data-mini="true" /></td>
+						</tr>
+						<tr>
+							<td style="border: 0px; align: right"></td>
+							<td style="border: 0px; align: right" colspan="3">
+								<table>
+									<tr>
+										<td style="border: 0px;" width="100px"><input
+											type="submit" id="btnSignin" data-mini="true" /></td>
+										<td style="border: 0px;" width="100px"><input type="reset"
+											id="btnReset" data-mini="true" /></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <style>
+        .container{
+                width:100%;
+                height:100%;
+                background:#fff;
+                position:absolute;
+                
+        }
+        .panel{
+            width:100%;
+            bottom:100px;
+            top:0px;
+            position:fixed;
+            bottom:140px;
+            
+            
+        }
+        #myIframe,#divFrame{
+            width: 100% !important;
+            height: 100% !important;
+            position: static;
+            padding: 0;
+            margin: 0;
+            padding-bottom:-120px;
+            
+        }
+        #divFrame{
+            width: 100%;
+            white-space: nowrap;
+            text-align: center;
+        }
+        #divFrame img{
+            vertical-align: middle;
+            max-height: 100%;
+            max-width: 100%;
+            
+        }
+
+        .tray{
+            clear:both;
+            width:100%;
+            height:100px;
+            background:#333;
+            margin-top:20px;
+            padding:10px 0;
+            position:fixed;
+            bottom:0px;
+            
+        }
+        .prev{
+            height:50px;
+            width:5%;
+            text-align:center;
+            position:absolute;
+            left:5px;
+            top:30%;
+            z-index:99999;
+            color:#fff;
+            font-size:40px;
+            font-weight:bold;
+            
+        }
+        .next{
+            height:50px;
+            width:5%;
+            text-align:center;
+            position:absolute;
+            right:5px;
+            top:30%;
+            z-index:99999;
+            color:#fff;
+            font-size:40px;
+            font-weight:bold;
+        }
+        .item_div{
+            width:90%;
+            background:#595959;
+            height:100px;
+            margin:0 0% 0 5%;
+            border-radius:5px;
+        }
+        .comments_div{
+            float:left;
+            width:29%;
+            background:#fff;
+            height:100px;
+            background:#1589ff;
+            border-radius:5px;
+            
+        }
+        .item{
+            width:100px;
+            height:80px;
+            background:#fff;
+            margin:10px 0% 10px 5%;
+            float:left;
+            text-align:center;
+            line-height:80px;
+            color:#000;
+            
+        }
+        /*tab*/
+        ul, li, div {
+            background: hsla(0, 0%, 0%, 0);
+            border: 0;
+            font-size: 100%;
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            vertical-align: baseline;
+            font: 13px/20px "Droid Sans", Arial, "Helvetica Neue", "Lucida Grande", sans-serif;
+            text-shadow: 0 1px 0 hsl(0, 100%, 100%);
+        }
+        li {
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+        .tabs-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width:100%;
+            height:50px;
+            border-bottom:#ddd solid 1px;
+            position:fixed;
+            top:0;
+            left:0px;
+            right:0px;
+            z-index:9999;
+            background:#fff;
+        }
+        .tabs-nav li:first-child{
+            border-right:#ddd solid 1px;
+        }
+        .tabs-nav li:first-child a {
+            
+            
+        }
+        .tabs-nav .tab-active a {
+            color: #1589ff !important;
+            cursor: default;
+            border-bottom:5px solid #1589ff;
+        }
+        .tabs-nav a {
+            color: #333 !important;
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            height: 45px;
+            line-height: 54px;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration:none;
+            border-bottom:5px solid #fff;
+        }
+        .tabs-nav li:last-child a{
+            border-right:0;
+        }
+        .tabs-nav li {
+            float: left;
+            width:50%;
+            box-sizing:border-box;
+            
+        }
+        .tabs-stage {
+            border-top: 0;
+            clear: both;
+            margin-bottom: 20px;
+            position: relative;
+            top: -1px;
+            width: 100%;
+            padding-top:55px;
+            box-sizing: border-box;
+        }
+        .tabs-stage p {
+            margin: 0;
+            padding: 20px;
+            color:#000;
+        }
+        .tabs-stage #tab-1{
+            box-sizing:border-box;
+        }
+        .top-div{
+            width:96%;
+            height:60px;
+            background: #999;
+            margin:20px auto;
+            
+        }
+        .bottom-div{
+            clear:both;
+            width:96%;
+            background:#ddd;
+            margin:auto;
+            height:auto;
+        }
+        .bottom-div .left-sec{
+            width:50%;
+            float:left;
+            padding:20px 0;
+            
+        }
+        
+        .top-div ul li{
+            border-left:#333 1px solid;
+            float:left;
+            list-style:none;
+            padding:20px 0;
+            text-align:center;
+            width:20%;
+            box-sizing:border-box;
+            font-size:14px;
+            color:#fff;
+            
+            
+        }
+        .top-div ul li:first-child{
+            border-left:0;
+        }
+        .like-div a.like{
+            background:url("hidoctor/images/like.png") no-repeat;
+            width:66px;
+            height:28px;
+            display:inline-block;
+            margin-left:70px
+            
+        }
+        .like-div a.dislike{
+            background:url("hidoctor/images/unlike.png") no-repeat;
+            width:35px;
+            height:28px;
+            display:inline-block;;
+            margin-left:20px
+            
+        }
+        .rate-div ul{
+            margin-left:70px;
+            margin-top:20px;
+        }
+        .rate-div ul li{
+            list-style:none;
+            float:left;
+        }
+        .rate-div ul li a{
+            background:url("view/rating/empty-star.gif") no-repeat;
+            width:30px;
+            height:30px;
+            margin-right:10px;
+            background-size:30px 30px;
+            display:inline-block;
+        }
+        .rate-div ul li a.full-img{
+            background:url("view/rating/full-star.gif") no-repeat;
+            width:30px;
+            height:30px; 
+            background-size:30px 30px;
+        }
+        .rating ul{
+            margin:0 0 0 29%;
+        }
+        .rating ul li{
+            list-style:none;
+            float:left;
+            padding:0px;
+            border-left:0px;
+            width:auto;
+        }
+        .rating ul li a{
+            background:url("view/rating/empty-star.gif") no-repeat;
+            width:16px;
+            height:16px;
+            margin-right:10px;
+            display:inline-block;
+        }
+        .rating ul li a.full-img{
+            background:url("view/rating/full-star.gif") no-repeat;
+            width:16px;
+            height:16px; 
+        }
+        .rating ul li a.half-img{
+            background:url("view/rating/full-star.gif") no-repeat;
+            width:16px;
+            height:16px; 
+        }
+        .bottom-div .right-sec{
+            width:50%;
+            float:right;
+        }
+        .right-sec textarea{
+            background:#fff !important;
+            color:#000;
+            margin-top:20px;
+            height:200px
+        }
+        
+        </style>
+
+        
+    </head>
+    <body>
+        <div class="container">
+            <div id="set" title="Set Appointment" class="panel" >
+                <ul class="tabs-nav">
+                    <li class="tab-active"><a href="#tab-1" rel="nofollow">Story</a>
+                    </li>
+                    <li class=""><a href="#tab-2" rel="nofollow">Reviews</a>
+                    </li>
+                </ul>
+                <div class="tabs-stage">
+                    <div id="tab-1" style="display: block;">
+                        <iframe id="myIframe" style="display:none;background:#fff;" frameborder="0" scrolling="auto" ></iframe>
+                        <div id="divFrame" style="display:none;"></div>
+         
+                    </div>
+                    <div id="tab-2" style="display:none">
+                        <div class='top-div'>
+                            <ul>
+                                <li class="rating">
+                                    <ul>
+                                        <li><a href="#" ></a></li>
+                                        <li><a href="#" ></a></li>
+                                        <li><a href="#" ></a></li>
+                                        <li><a href="#" ></a></li>
+                                        <li><a href="#" ></a></li>
+                                    </ul>
+                                </li>
+                                <li class="rating-count"><label>2.5</label> Stars</li>
+                                <li class="total-views"><label>13</label> Views</li>
+                                <li class="total-like"><label>5</label> Likes</li>
+                                <li class="total-dislike"><label>0</label> Dislikes</li>
+                                
+                            </ul>
+                        </div>
+                        <div class='bottom-div'>
+                            <div class='left-sec'>
+                                <div class="like-div">
+                                    <a class="like" href="#" id='like_button'></a>
+                                    <a class="dislike" href="#" id='dislike_button'></a>
+                                </div>
+                                <div class="rate-div">
+                                    <ul>
+                                        <li><a href="#" id="rate1"></a></li>
+                                        <li><a href="#" id="rate2"></a></li>
+                                        <li><a href="#" id="rate3"></a></li>
+                                        <li><a href="#" id="rate4"></a></li>
+                                        <li><a href="#" id="rate5"></a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class='right-sec'>
+                                <textarea rows="20" cols="50" placeholder="Comments" id="comments"></textarea>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                
+            </div>
+            <div class="tray">
+           		<div class="prev" onclick="prevFunction();" id="prev"><</div>
+                    <div class="next" onclick="nextFunction();" id="next">></div> 
+                    <div class="item_div"></div>
+                </div>   
+                </div>
+       </div>
+
+
+        <link rel="stylesheet"
+        href="jquery.mobile/jquery.mobile-1.3.1.min.css" />
+        <script type="text/javascript" charset="utf-8"
+            src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8"
+            src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="../../cordova-2.6.0.js"></script>
+         <script type="text/javascript">
+             var assetURL = ["68.jpg","http://stream.swaas.manageanycloud.com:44444/swaas/swaas/0005112fb828404ea1eed4d68e95e14520140203175251/27/SharadMutalic.mp4/playlist.m3u8?auth=secret","http://data-fi.com/uploads/sample.pdf","http://hellopt.googlecode.com/files/Sample.ppt","http://elearn.blob.core.windows.net/test/Doctorbulkupload.mp4","35.png"];
+             var index = 0;
+             //$('a.media').media({width:500, height:800});
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady(){
+                 $('.tabs-nav li:first a').trigger('click'); // Default
+                 showFrame(0);
+                 createTray();
+            }
+            function prevFunction(){
+                change(true);
+            }
+         
+            function nextFunction(){
+                change(false);
+            }
+         
+            function createTray(){
+                for(var i=0;i<assetURL.length;i++){
+                $(".item_div").append("<div class='item' id='item"+i+"' onclick='showFrame("+i+")'>"+(i+1)+"</div>");
+                }
+            }
+         
+         function showFrame(index){
+             $("#divFrame").html("");
+             $("#myIframe").show();
+             resetFunction();
+             $('.tabs-nav li:first a').trigger('click');
+             var tabheight=$(".tabs-nav").height();
+             var trayheight=$(".tray").height();
+             var panelheight=$(".panel").height();
+             var windowheight=screen.width;
+             //var paddingheight=55
+             var contentheight=(windowheight-(tabheight+trayheight))+'px';
+             //alert(screen.width);
+           // alert("window->"+windowheight);
+            //alert("panelheight->"+panelheight);
+            //alert("content->"+contentheight);
+             $("#divFrame").css({"height": contentheight,"line-height": contentheight});
+             $(".tabs-stage").css({"height": contentheight,"line-height": contentheight});
+             $("#tab-1").css({"height": contentheight,"line-height": contentheight});
+             var ext=assetURL[index].substr(assetURL[index].lastIndexOf('.')+1,assetURL[index].length-1);
+             $("#myIframe").show();
+             $("#divFrame").hide();
+             $("#myIframe").data('target', index);
+             $("#myIframe").attr("src",assetURL[index]);
+             $("#myIframe").unbind('load').load(function () {
+                var ext=assetURL[index].substr(assetURL[index].lastIndexOf('.')+1,assetURL[index].length-1);
+                $(".panel").css("position","fixed");
+                    if((ext=='ppt')||(ext=='pptx')){
+                        $(".panel").css("position","static");
+                    }else if(ext=='pdf'){
+                        $("#myIframe").hide();
+                        $("#divFrame").show();
+                        $("#divFrame").append("<img src='pdf.png'/>");
+                        //$('a.media').media({width:500, height:400});
+                        //$("a.media").show();
+                       // $(".panel").css("position","fixed");
+                        var ref = window.open(assetURL[index], '_blank', 'location=no');
+
+                    }
+                var bdy = $(this).contents().find('body');
+                bdy.append("<style>.inner > img{max-width:100%;} .inner-ppt {padding-bottom:100px; position:relative;} .slide{ left: 50% !important; margin-left: -360px ; } </style>");
+                var cont = bdy.html();
+                var html = '<div id="a" class="inner inner-ppt">' + cont +  '</div>';
+                bdy.html(html);
+            });
+         
+         }
+         
+         function change(bPrev){
+             var curIndex = $("#myIframe").data('target');
+             if(bPrev) {
+                 curIndex = (curIndex == 0 ) ? 0 : curIndex - 1;
+             } else {
+                 curIndex = (curIndex == assetURL.length - 1) ? curIndex : curIndex+1;
+             }
+             showFrame(curIndex);
+         }
+         
+         $(document).on('click', '.tabs-nav a' ,function (event) {
+            event.preventDefault();
+            $('.tab-active').removeClass('tab-active');
+            $(this).parent().addClass('tab-active');
+            $('.tabs-stage > div').hide();
+            $($(this).attr('href')).show();
+        });
+        
+        $(document).on('click', '#like_button' ,function (event) {
+            alert("like");
+        });
+        
+        $(document).on('click', '#dislike_button' ,function (event) {
+            alert("dislike");
+        });
+
+        $(document).on('click', '.rate-div ul li a' ,function (event) {
+            var rateValue = ($(this).parent().index() + 1);
+            $('.rate-div ul li a').removeClass('full-img');
+            for(var i=0;i<rateValue;i++){  console.log($('.rate-div ul li').eq(i));
+            $('a', $('.rate-div ul li').eq(i)).addClass("full-img");
+            }
+        });
+        
+        $(document).on('click', '.rate-div ul li a' ,function (event) {
+            return false;
+       });
+       
+       function resetFunction(){
+            $('.rate-div ul li a').removeClass('full-img');
+            $('#comments').val('');
+       }
+
+
+        </script>
+    </body>
+</html>

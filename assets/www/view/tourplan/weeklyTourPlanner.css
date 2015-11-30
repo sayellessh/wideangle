@@ -1,0 +1,87 @@
+
+.tpdates{
+	font-size : 24px
+}
+
+.tpdetails{
+	font-size : 14px
+}
+
+.tpSelectedRow {
+	background-color : #1589FF;
+	border-top : 4px solid #153E7E;
+	border-left : 4px solid #153E7E;
+}
+
+.tpSelectedRow .leftCell{
+	background-color : #1589FF;
+	color:white;
+}
+
+.tpSelectedRow .rightCell{
+	background-color : black;
+	color:white;
+}
+
+.tpNormalRow {
+	background-color : #696565;
+}
+
+.tpNormalRow .leftCell{
+	background-color : #595959;
+	color:black;
+}
+
+.tpNormalRow .rightCell{
+	background-color : black;
+	color:white;
+}
+
+.weeklytpFirstDay {
+	font-size: 10px;
+}
+
+.weeklyTPDay {
+	font-size: 10px;
+	color: #150517;
+}
+.weeklytpFirstDate {
+	font-weight: bold;
+	font-size: 24px;
+}
+.weeklyTPDate {
+	color: #150517;
+	font-size: 24px;
+	font-weight: 200;
+}
+
+.weeklyTPFirstMonthYear {
+	font-size: 10px;
+}
+.weeklyTPMonthYear {
+	font-size: 10px;
+	color: #150517;
+}
+
+.weeklyTPDateStatus {
+	font-size: 10px;
+}
+
+.weeklyTPFromPlace {
+	font-size: 10px;
+}
+.weeklyTPToPlace {
+	font-size: 10px;
+}
+.weeklyTP_CPName {
+	font-size: 10px;
+}
+.weeklyTPDoctorCoverd {
+	font-size: 10px;
+}
+.tpRightCell tr td {
+
+text-align : left;
+padding-left : 4px;
+color : #FFFFFF;
+}

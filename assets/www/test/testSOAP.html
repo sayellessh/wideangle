@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../jquery.mobile/jquery.mobile-1.1.0.min.css" />
+
+<script src="../jquery.mobile/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+	<input type="BUTTON" id="btnWCFBasicHttp" value="Click Here" />
+<script type="text/javascript">
+    $(document).ready(function () {
+    	
+    	var operation = "GetWelcome";
+    	var service = "HDInfrastructureService";
+       var bhRequest = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
+       		//"<s:Header>" + 
+       		//"  <Action s:mustUnderstand=\"1\" xmlns=\"http://schemas.microsoft.com/ws/2005/05/addressing/none\">http://tempuri.org/IHDInfrastructureService/GetWelcome</Action>" + 
+       		//"</s:Header>" +
+            "<s:Body>" +
+            "<" + operation + " xmlns=\"http://tempuri.org/\">" +
+            "<objInput xmlns:d4p1=\"http://schemas.datacontract.org/2004/07/HiDoctor_WCF\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">" +
+            "<d4p1:LastName>Ramaswamy</d4p1:LastName><d4p1:firstName>Saravanan</d4p1:firstName></objInput>" +
+           // "<correlationId>4cbe3738-e0b3-4635-a4e4-807f13b54218</correlationId>" +
+           // "<userName>anand163</userName>" +
+           // "<subDomainName>localhost</subDomainName>" +
+           // "<companyCode>COM00000068</companyCode>" +
+           // "<userCode>USC00000045</userCode>" +
+           // "<regionCodes>'REC00000043'</regionCodes>" +
+           // "<lastModifiedDate></lastModifiedDate>" +
+            "</" + operation + ">" +
+            "</s:Body>" +
+        "</s:Envelope>";
+        console.log(bhRequest);
+		$("#btnWCFBasicHttp").click(function () {
+           $.ajax({
+                type: "POST",
+                url: "http://182.18.144.233:8080/" + service + ".svc",
+                data: bhRequest,
+                timeout: 10000,
+                contentType: "text/xml",
+                dataType: "xml",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("SOAPAction", "http://tempuri.org/I"+ service + "/" + operation);
+                },
+                success: function (data) {
+                	console.log(data);
+                	
+                	$(data).find(operation + "Response").each(function () {
+                		console.log($(this).find(operation + "Result").text());
+                        alert($(this).find(operation + "Result").text());
+                    });
+                },
+                error: function (xhr, status, error) {
+                	console.log(xhr);
+                    //alert(xhr);
+
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

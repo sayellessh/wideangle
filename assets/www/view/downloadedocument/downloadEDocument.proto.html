@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>	
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>		
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8" src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/MockGeolocation.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/AssetTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/ProductTable.js"></script>
+		
+<!-- Error -->
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+
+
+<!-- Download E-Documents -->
+<script type="text/javascript" charset="utf-8"
+	src="downloadEDocument.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/brand/BrandLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetBillingLocalDAO.js"></script>		
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/user/UserDivisionLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>		
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/configuration/ConfigurationLocalDAO.js"></script>
+	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/product/ProductService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/asset/AssetService.js"></script>
+
+<!-- Analytics for Asset -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DAAnalyticHistoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DATagAnalyticLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DATagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/upgrade/UpgradeRemoteDAO.js"></script> 
+		
+
+
+<!--Rating Stars -->
+<script type="text/javascript" charset="utf-8"
+	src="../rating/jquery.ratings.js"></script>
+<link rel="stylesheet" href="../rating/jquery.ratings.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../eDetailing/rating.js"></script>
+
+<!-- Asset DownloadList -->
+<script type="text/javascript" charset="utf-8"
+	src="../components/SelectedAssetsTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/removeActivity.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/activityManager.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.css" />
+<script type="text/javascript"
+	src="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.js"></script>
+	
+<script type="text/javascript" charset="utf-8"
+	src="../components/activityManager.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/downloadActivity.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../nativePlayer/nativePlayer.js"></script>
+
+<!-- DCR -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/CheckSumLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/CheckSumRemoteDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRHeaderLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDoctorAccompanistLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDetailedProductsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/ChemistVisitLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/attendance/TimeSheetEntryLocalDAO.js"></script>
+</head>
+
+<script>
+	/* document
+			.addEventListener(
+					"deviceready",
+					com.swaas.hidoctor.edetailing.ui.view.downloadEDocument.init,
+					false);
+	document
+    .addEventListener(
+            "resume",
+            com.swaas.hidoctor.edetailing.ui.view.downloadEDocument.backFromDocOpen,
+            false); */	
+</script>
+<style type="text/css">
+#lightBox{
+background-color : black;
+border : 8px solid white;
+height : 400px;
+width : 400px;
+}
+#lightBox tr td { 
+text-align : center;
+}
+
+</style>
+<body>
+	<div data-role="page" id="page-download" class="type-interior"
+		data-theme="b">
+		<div id="header"></div>
+		<div id="content" style="display:none">
+			<table width="100%">
+				<tr>
+					<td colspan="3"><label style="font-size: 25px;"
+						id="lblDownload"></label></td>
+				</tr>
+
+				<tr>
+					<td valign="top" style="padding-right: 10px" width="25%">
+						<div id="productContainer" style="overflow: auto">
+							<table id="productTable" width="100%" height="100px">
+								<caption style="text-align: initial">
+									<label id="productCaption" style="font-size: 20px;"></label>
+								</caption>
+							</table>
+						</div>
+					</td>
+					<td valign="top" style="padding-right: 10px" width="40%">
+
+						<div class="ui-grid-a">
+							<label id="assetCaption" style="font-size: 20px;"></label>
+							<div id="assetContainer">
+							<div class="ui-block-a" id="productList">
+								<table id="assetTable" width="100%">
+									<caption style="text-align: initial">
+										<label id="assetCaption" style="font-size: 20px;"></label>
+									</caption>
+								</table>								
+							</div>
+							<div class="ui-block-a" id="productDetails"
+								style="display: hidden"></div>
+							</div>
+						</div>
+						<div id="player" style="display: none; background-color:black;height:300px;text-align:center;vertical-align:middle;"
+										tabindex="1000"></div>
+					</td>
+					<td valign="top" width="30%">
+						<div class="ui-grid-a">
+							<div class="ui-block-a" id="downloadList" style="display: hidden;width : 100%;">
+								<table id="assetDownloadTable" width="100%">
+									<caption style="text-align: initial">
+										<label id="assetDownloadCaption" style="font-size: 20px;"></label>
+									</caption>
+								</table>
+							</div>
+						</div> 
+						<input type="button" value="Download" id="activityTrigger"
+						data-theme="b" data-mini='true' data-corners="false"></input>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<link rel="stylesheet"
+	href="../../jquery.mobile/arrow.popup.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/arrow.popup.js"></script>
+
+<!-- jquery ui -->
+<script type="text/javascript" charset="utf-8"
+	src="../../jqueryui/jquery-ui.min.js"></script>
+<link rel="stylesheet"
+	href="../../jqueryui/jquery-ui.min.css" />
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/MockGeolocation.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>	
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreSOAP.js">
+</script><script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>			
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/user/AccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/upgrade/UpgradeRemoteDAO.js"></script>
+		
+<!-- Error -->
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+    	
+<!-- assets autosync -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetResultLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DenormAssetQueryInputsLocalDAO.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="../../service/core/ZipUtil.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="../../service/asset/AssetService.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetLocalDAO.js"></script> -->
+
+<!-- Calendar -->
+<link rel="stylesheet" href="calendar.css" />
+<script type="text/javascript" charset="utf-8" 
+	src="calendar.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/dcr/CalendarService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/configuration/ConfigurationLocalDAO.js"></script>
+
+<!-- Travel planner -->
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/tourplan/TPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/customer/CustomerLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8"
+    src="../../service/entity/doctor/DoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>	
+	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/doctor/DoctorService.js"></script>
+	
+
+<link rel="stylesheet" href="../components/TourplanTable.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../amchart/amcharts.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="../components/TourplanTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/tourplan/TourPlanServices.js"></script>
+<!-- DCR -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/CheckSumLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/CheckSumRemoteDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRHeaderLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDoctorAccompanistLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDetailedProductsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/ChemistVisitLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/attendance/TimeSheetEntryLocalDAO.js"></script>
+<script>
+var fail = function(e) {
+	var msg = '';
+    switch ( e.code ) {
+        case FileError.ENCODING_ERR:
+            msg = 'ENCODING_ERR';
+            break;
+        case FileError.INVALID_MODIFICATION_ERR:
+            msg = 'INVALID_MODIFICATION_ERR';
+            break;
+        case FileError.INVALID_STATE_ERR:
+            msg = 'INVALID_STATE_ERR';
+            break;
+        case FileError.NO_MODIFICATION_ALLOWED_ERR:
+            msg = 'NO_MODIFICATION_ALLOWED_ERR';
+            break;
+        case FileError.NOT_FOUND_ERR:
+            msg = 'NOT_FOUND_ERR';
+            break;
+        case FileError.NOT_READABLE_ERR:
+            msg = 'NOT_READABLE_ERR';
+            break;
+        case FileError.PATH_EXISTS_ERR:
+            msg = 'PATH_EXISTS_ERR';
+            break;
+        case FileError.QUOTA_EXCEEDED_ERR:
+            msg = 'QUOTA_EXCEEDED_ERR';
+            break;
+        case FileError.SECURITY_ERR:
+            msg = 'SECURITY_ERR';
+            break;
+        case FileError.TYPE_MISMATCH_ERR:
+            msg = 'TYPE_MISMATCH_ERR';
+            break;
+        default:
+            msg = 'Unknown Error';
+            break;
+    };
+    ED.hideLoading();
+    console.log(msg);
+    alert(msg);
+};
+	document.addEventListener("deviceready",
+			com.swaas.hidoctor.edetailing.ui.view._Calendar.init, false);
+	
+	$( document ).on( "pageinit", "#canledarPage", function() {
+		
+		$( document ).on( "swiperight", "#canledarPage", function( e ) {
+		// We check if there is no open panel on the page because otherwise
+	        // a swipe to close the left panel would also open the right panel (and v.v.).
+	        // We do this by checking the data that the framework stores on the page element (panel: open).
+	        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+	            if ( e.type === "swipeleft"  ) {
+	                $( "#right-panel" ).panel( "open" );
+	            } else if ( e.type === "swiperight" ) {
+	                $( "#left-panel" ).panel( "open" );
+	            }
+				$( "#left-panel" ).panel( "open" );
+	        }
+	    });
+		
+		$( '#footerBody' ).on( "click", function( e ) {
+			$( "#arrow-popup" ).popup( "open", { x: (e.pageX), y: (e.pageY - 20) } );
+			// if ( $( e.target ).parents( "#footerBody" ).length > 0 ) {
+			//	$( "#arrow-popup" ).popup( "open", { x: e.pageX, y: e.pageY } );
+			//} 
+		});
+	});
+</script>
+<style>
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	
+	border-top: 20px solid #17252D;
+}
+.ui-panel-inner {
+	padding: 0px;
+	background-color: #04AEDA;
+}
+#settingsList li {
+	border-bottom: 1px solid white;
+	padding: 5px;
+}
+#settingsList li table {
+	width: 100%;
+}
+#settingsList li table tr td {
+	text-align: center;
+}
+#settingsList li table tr td img {
+	text-align: center;
+	width: 70px; 
+	height: 70px;
+}
+#settingsList li table tr td div {
+	text-align: center; 
+	color: white; 
+	font-size: 18px;
+}
+
+.copy_right {
+	text-align: left; 
+	color: #fff;
+}
+
+#retiredAssets-popup ul.items {
+	height: 300px; 
+	overflow: auto;
+}
+#retiredAssets-popup ul.items li {
+	padding: 15px;
+	width: 300px;
+	border-bottom: 1px solid #888;
+	border-radius-top: 5px;
+	text-decoration: none;
+	list-style: none;
+}
+#retiredAssets-popup ul.items li:last-child {
+	border-radius-top: 0px;
+	border-bottom: none;
+	border-radius-bottom: 5px;
+}
+</style>
+</head>
+<body style="background-color: #38414A;">
+	<div data-role="page" id="canledarPage">
+		<!-- <input type="button" value="D" id="mybtn"/> -->
+		<div data-role="header" id="header">
+		</div>
+		
+		<div id="content" data-role="main" class="ui-content" style="height: 750px; padding: 0px; background-color: #38414A;">
+			<table style="width: 100%;">
+			<tr>
+			<td style="text-align: right; width: 33%" id="calAssets">
+				<div style="float: right; width: 200px; height: 300px; border: 10px solid #17252D; border-radius: 5px; background-image: url('img/asset.jpg');">
+				<!-- <img src="pouch_hero_web.jpg" style="width: 200px; height: 300px; margin: 0px; border: 10px solid #17252D;"/> -->
+				</div>
+				<div style="clear: both; float: right; margin-right: 28%;" class="arrow-down"></div>
+				<div style="clear: both;"></div>
+				<div style="color: white; float: right;width: 220px;text-align: center; font-size: 30px; font-weight: bold">Assets</div>
+			</td>
+			<td style="text-align: center; width: 33%" id="tourPlanTd">
+				<div style="width: 200px; height: 300px; border: 10px solid #17252D; border-radius: 5px; background-image: url('img/clm.jpg'); margin-left: 20%;">
+				<!-- <img src="profile-picture.jpg" style="width: 200px; height: 300px; border: 10px solid #17252D;"/> -->
+				</div>
+				<div style="clear: both; float: right; margin-right: 45%;" class="arrow-down"></div>
+				<div style="clear: both;"></div>
+				<div style="color: white; float: right;width: 100%;text-align: center; font-size: 30px; font-weight: bold">CLM</div>
+			</td>
+			<td style="text-align: left; width: 33%" id="dcrTd">
+				<div style="width: 200px; height: 300px; border: 10px solid #17252D; border-radius: 5px; background-image: url('img/crm.jpg'); float: left;">
+				<!-- <img src="tasks.png" style="width: 200px; height: 300px; border: 10px solid #17252D;"/> -->
+				</div>
+				<div style="clear: both; float: left; margin-left: 25%;" class="arrow-down"></div>
+				<div style="clear: both;"></div>
+				<div style="color: white; float: left;width: 200px;text-align: center; font-size: 30px; font-weight: bold">CRM</div>
+			</td>
+			</tr>
+			</table>
+		</div>
+		
+		<!-- <div class="ui-footer ui-footer-fixed slideup" role="contentinfo" style="color: white; opacity: 0.2; background: linear-gradient(#3d4851, #1e252a) repeat scroll 0 0 #1e252a;">
+		<h4 class="ui-title" role="heading" aria-level="1"></h4>
+		</div> -->
+		<div class="ui-footer ui-footer-fixed slideup" id="footerContents" role="contentinfo" style="color: white; background: none;">
+		<div class="ui-title" id="footerBody" style="display: inline-block; position: relative; float: right; text-align: right; background: url('user1_48x48.png') no-repeat scroll 100% 0; padding-right: 60px;">
+		
+		</div>
+		
+		<!-- <div onclick="ED.quit()" style="margin-top: 12px; background-image: url('logout.png'); background-color: #CE4544; float: left; display: inline-block; width: 48px; height: 48px;"><a onclick="ED.quit()" data-icon="custom" id="powerOff" class="ui-link"></a></div> -->
+		
+		</div>
+		
+		<div id="syncConfirmationDiv"  style="position:absolute;padding:10px;z-index:9900; width : 60%;display:none" ></div>
+		<div id="eraseconfirmationDiv"  style="position:absolute;padding:10px;z-index:9900; width : 60%;display:none" ></div>
+		<div data-role="popup" data-arrow="true" id="arrow-popup">
+		    <!-- <table>
+		    <tr>
+		    <td>
+		    <img src="img/erkek.png" style="width: 300px; height: 300px;" />
+		    </td>
+		    <td style="padding-right: 50px;">
+		    	<table>
+		    	<tr>
+		    	<td>
+		    		<img src="" style="width: 100px; height: 100px;"/>
+		    		<div style="text-align: center;">Profile</div>
+		    	</td>
+		    	<td>
+		    		<img src="" style="width: 100px; height: 100px;"/>
+		    		<div style="text-align: center;">DCR</div>
+		    	</td>
+		    	</tr>
+		    	<tr>
+		    	<td>
+		    		<img src="" style="width: 100px; height: 100px;"/>
+		    		<div style="text-align: center;">CRM</div>
+		    	</td>
+		    	<td onclick="ED.quit()">
+		    		<img src="logout.png" style="width: 100px; height: 100px;"/>
+		    		<div style="text-align: center;">Logout</div>
+		    	</td>
+		    	</tr>
+		    	</table>
+		    </td>
+		    </tr>
+		    </table> -->
+		    <table>
+		    <!-- <tr>
+		    <td style="width: 200px; padding: 10px; background: url('../../hidoctor/images/doctors.png') no-repeat scroll 0 2px; background-size: 15%; padding-left: 40px; border-bottom: 1px solid #CCCCCC">Profile</td>
+		    </tr> -->
+		    <tr>
+		    <td onclick="ED.quit()" style="width: 200px; padding: 10px; background: url('../../hidoctor/images/exit.png') no-repeat scroll 0 2px; background-size: 15%; padding-left: 40px;">Exit</td>
+		    </tr>
+		    </table>
+		</div>
+		<div id="left-panel" data-role="panel" data-position="left" data-display="push" data-dismissible="true" >
+			<ul id="settingsList" style="background-color: #3B434B; position: relative; padding: 0px; margin: 0px; overflow: auto;">
+				
+			</ul>
+		</div>
+	</div>
+	<script>
+		/*$(function() {
+			setTimeout(com.swaas.hidoctor.edetailing.ui.view.Calendar._autoUpdateAssets, 5000);
+		});*/
+		/*$(document).ready(function(){
+			//com.swaas.hidoctor.edetailing.ui.view._Calendar.init();
+			$('body').html('');
+			com.swaas.hidoctor.edetailing.ui.view._Calendar.init();
+		});*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+	
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+	src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>			
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>
+<!-- Login -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/SaleProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+      src="../../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+src="../../service/entity/dcr/ChemistVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script>      	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/customer/CustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/dcr/DCRService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/product/ProductService.js"></script>
+<script type="text/javascript" charset="utf-8" src="./dcr.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="./AutoComplete.js"></script>
+<script type="text/javascript" charset="utf-8" src="./ProductInput.js"></script>
+<script type="text/javascript" charset="utf-8" src="./ChemistInput.js"></script>
+<script type="text/javascript" charset="utf-8" src="./SalesInput.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="./CompetitorInput.js"></script>
+<!-- time picker -->	
+<link type="text/css" href="../timePicker/jqm-datebox.min.css" rel="stylesheet" /> 
+<!-- NOTE: Script load order is significant! -->
+<script type="text/javascript" src="../timePicker/jqm-datebox.core.min.js"></script>
+<script type="text/javascript" src="../timePicker/jqm-datebox.mode.datebox.min.js"></script>
+<script type="text/javascript" src="../timePicker/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+
+<!-- checking internet -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>		
+<!-- Error -->
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+
+<script type="text/javascript" charset="utf-8" 
+	src="../core/MockGeolocation.js"></script>   
+</head>
+<script>
+	document.addEventListener("deviceready",
+			com.swaas.hidoctor.edetailing.ui.view.Dcr.init, false);
+</script>
+
+<body>
+	<div data-role="page" 
+		data-theme="a">
+		<div id="header"></div>
+		<label id="progress"></label>
+		<div id="content" style="display:none">
+			<form id="dcrPersist">
+				<table>
+				<tr>
+				<td colspan="2" >
+					<label style="font-size: 25px;" id="doctorvalues"></label>
+				</td>
+				
+				</tr>
+					<tr>
+						<td width="10%" valign="top" style="border: 0px; align: right"
+							nowrap="nowrap"><label id="lblvisitTime"></label></td>
+						<td width="70%" align="left"><div style="width: 150px">
+								<input id="visitTime" type="time" data-role="datebox"
+									data-theme="b" data-options='{"mode": "timebox"}' />
+							</div></td>
+					</tr>
+					<tr>
+						<td width="10%" valign="top" style="border: 0px; align: right"
+							nowrap="nowrap"><label id="lblremarks"></label>
+						<td width="70%" align="left">
+							<textarea id="remarks" data-theme="b" style="width: 400px" maxlength="100"> </textarea>
+						</td>
+					</tr>
+					<tr>
+						<td width="10%" valign="top" style="border: 0px; align: right"
+							nowrap="nowrap"><label id="lblinputs"></label>
+						<td width="70%" align="left">
+							<div id="productInputDiv"></div>
+						</td>
+					</tr>
+					<tr>
+						<td width="10%" valign="top" style="border: 0px; align: right"
+							nowrap="nowrap"><label id="lblchemists"></label>
+						<td width="70%" align="left">
+							<div id="chemistInputDiv"></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="border: 0px;" width="100%" align="center"><input
+							type="button" id="btnPersist" data-mini="true" data-theme="b" style="width:100px" data-corners="false"
+							onclick="com.swaas.hidoctor.edetailing.ui.view.Dcr.onSave();" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

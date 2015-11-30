@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- Popup -->
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile.simpledialog2.js"></script>
+
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8" src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>
+<!-- Download E-Documents -->
+<script type="text/javascript" charset="utf-8"
+	src="../product/productList.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../asset/assetList.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../asset/assetDownloadList.js"></script>
+
+
+<!-- popup -->
+<script type="text/javascript" charset="utf-8"
+	src="../asset/assetDetailPopup.js"></script>
+
+
+<!-- Travel planner -->
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/tourplan/TPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/tourplan/TourPlanServices.js"></script>	
+
+
+
+<link rel="stylesheet" href="../../slider/elastislide.css" />
+<link rel="stylesheet" href="../../slider/custom.css" />
+<link rel="stylesheet" href="../../slider/demo.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/brand/BrandLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/product/ProductService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/asset/AssetService.js"></script>
+<!-- makespace -->
+<script type="text/javascript" charset="utf-8"
+	src="../makespace/makespace.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/ProductTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/AssetTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/SelectedAssetsTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/TourplanTable.js"></script>	
+<script type="text/javascript" charset="utf-8"
+	src="../components/test.js"></script>	
+		
+<link rel="stylesheet" type="text/css"
+	 href="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.css" />
+<script type="text/javascript" 
+	src="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.js"></script>
+	
+<link rel="stylesheet" href="../components/TourplanTable.css" />
+
+<script>
+	document
+			.addEventListener(
+					"deviceready",
+					com.swaas.hidoctor.edetailing.ui.view.makespaceNew.init,
+					false);
+</script>
+</head>
+<body  > 
+	<div data-role="page" id="page-download" class="type-interior"
+		data-theme="a">
+		<table width="100%">
+			<tr>
+				<td colspan="3"><label style="font-size: 25px;"
+					id="lblmakeSpace"></label></td>
+			</tr>
+
+			<tr>
+				<td valign="top" style="padding-right: 10px" width="25%">
+					
+					<table id="tourPlanTable" width="100%" cellspacing="2" cellpadding="0">
+						<caption style="text-align: initial">
+							<label id="productCaption" style="font-size: 20px;"></label>
+						</caption>
+					</table>
+					
+				</td>
+				<td valign="top" align="center" style="padding-right: 10px;" width="40%" bgcolor="green" >
+
+					<div class="ui-grid-a">
+						<label id="assetCaption" style="font-size: 20px;"></label>  
+						<div class="ui-block-a" id="productList">
+							<table id="assetTable" width="100%" >
+								<caption style="text-align: initial">
+									<label id="assetCaption" style="font-size: 20px;"></label>
+								</caption>
+							</table>
+						</div>						    
+					
+					</div>
+				</td>
+				<td valign="top" width="30%" bgcolor="red">
+					<div class="ui-grid-a">
+						<div class="ui-block-a" id="downloadList" style="display: hidden;width : 100%">
+							<table id="selectedItemsTable" width="100%"  >
+								<caption style="text-align: initial">
+									<label id="selectedAssetsCaption" style="font-size: 20px;"></label>
+								</caption>
+							</table>
+						</div>
+					
+						<!--Elastic Slide Start-->
+						<div class="ui-block-b" id="relatedAssetList"  
+							style="display: hidden; overflow-y:auto; width:100%;background-color:black;">
+							<table id="relatedAssetTable" width="100%">								
+							</table>	
+						</div>
+					</div> 
+					<!--Elastic Slide End-->
+					<div class="ui-block-c" id="spotlightList" style="display: hidden;">
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+</html>

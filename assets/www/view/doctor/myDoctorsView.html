@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+
+<!-- jquery ui -->
+<script type="text/javascript" charset="utf-8"
+	src="../../jqueryui/jquery-ui.min.js"></script>
+<link rel="stylesheet"
+	href="../../jqueryui/jquery-ui.min.css" />
+
+<!-- FastClick -->
+<!-- <script type='application/javascript' src='../../fastclick/fastclick.js'></script> -->
+
+<!-- iScroll 4 -->
+<script type="text/javascript" charset="utf-8"
+	src="../../iscroll4/iscroll.js"></script>
+
+<!-- nice scroll -->
+<!-- <script type="text/javascript" charset="utf-8"
+	src="js/jquery.nicescroll.min.js"></script> -->
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/MockGeolocation.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/SelectedAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/AccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/dcr/DCRService.js"></script>    
+		
+<!-- Error -->
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+
+<!-- Doctor List -->
+<script type="text/javascript" charset="utf-8" src="doctorList.js"></script>
+<script type="text/javascript" charset="utf-8" src="doctorSearch.js"></script>
+<script type="text/javascript" charset="utf-8" src="myDoctorsView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/doctor/DoctorService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/customer/CustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/DoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/configuration/ConfigurationLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/AnalyticsDoctorVisitLocalDAO.js"></script>	
+	
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/tourplan/TourPlanServices.js"></script>
+
+<link rel="stylesheet" href="../components/TourplanTable.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../components/TourplanTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/tourplan/TourPlanServices.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../amchart/amcharts.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../components/DoctorTable.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/Doctor360RemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../doctor360/doctor360.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/DoctorTagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/DoctorTagLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/upgrade/UpgradeRemoteDAO.js"></script> 
+		
+
+<!-- Tag it -->
+<script type="text/javascript" charset="utf-8" src="../tagedit/js/jquery-ui-1.8.autocomplete.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../tagedit/js/tag-it2.js"></script>
+<link rel="stylesheet"	href="../tagedit/css/jquery.ui.autocomplete.custom.css" />
+
+<!-- DCR -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/CheckSumLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/CheckSumRemoteDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRHeaderLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDoctorAccompanistLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDetailedProductsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/ChemistVisitLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script><script type="text/javascript" charset="utf-8"
+	src="../../service/entity/attendance/TimeSheetEntryLocalDAO.js"></script>
+
+<!-- assets autosync -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetResultLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DigitalAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/asset/DenormAssetQueryInputsLocalDAO.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="../../service/core/ZipUtil.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="../../service/asset/AssetService.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetLocalDAO.js"></script> -->
+
+<link rel="stylesheet"	href="css/myDoctorsView.css" />
+
+<style type="text/css">
+#popup_more_wrapper { background: rgba(0,0,0,0.7);
+    position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px;
+    z-index: 9999;
+}
+.popup_more { width: 70%; background-color: #e2e2e2;
+    position: absolute; margin-left: 50%; left: -35%;
+}
+.popup_more .close_btn {
+    position:absolute;
+    top:0px;
+    right:0px;
+    background: #000;
+    color: #fff;
+    border-radius: 10%;
+    -webkit-border-radius: 50px;
+    width: 15px;
+    height: 15px;
+    text-align:center;
+}
+.popup-content { overflow-y: scroll; }
+</style>
+
+<script>
+
+	document.addEventListener("deviceready",
+			com.swaas.hidoctor.edetailing.ui.view.MyDoctorsView.init, false);
+	
+	var doctor360_g = null;
+
+	/* window.addEventListener('load', function() {
+	    new FastClick(document.body);
+	}, false); */
+	
+	$( document ).on( "pageinit", "#pageone", function() {
+		
+		$( document ).on( "swipeleft", "#pageone", function( e ) {
+			// We check if there is no open panel on the page because otherwise
+	        // a swipe to close the left panel would also open the right panel (and v.v.).
+	        // We do this by checking the data that the framework stores on the page element (panel: open).
+	        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+				$( "#md-right-panel" ).panel( "open" );
+	        }
+	    });
+
+	});
+
+	//var doctor = {"customerCode":"DOC00000006D252","regionCode":"REC00000006","customerName":"RODE A A","mdl":"00000001","categoryCode":"DCT00000010","specialityCode":"SPC00000024","customerEntityType":"DOCTOR","regionName":"MUMBAI KALYAN E","categoryName":"PRX NC","specialityName":"SURGEON"};;
+
+</script>
+</head>
+<body>
+
+<div data-role="page" id="pageone">
+  
+  <div data-role="panel" data-theme="b" id="md-right-panel" data-position="right" data-display="push"> 
+    <ul>
+    <li class="title"><div>Accompanists</div></li>
+    </ul>
+  </div>
+
+		<div data-role="header" id="header">
+		</div>
+		<!-- <div data-role="header">
+    <h1 id="heading" style="margin: 0px;"><label style="padding-left: 13%; font-size: 40px;">My Customers</label> <input placeholder="Search" type="search" name="name" id="name" value="" /></h1>
+    <a href="#" id="home" data-role="button" data-icon="home" data-iconshadow="false"
+        data-direction="reverse" data-transition="slide"
+        data-iconpos="notext"  class="ui-btn-left" style="width: 40px; padding-top: 8px;">home</a>
+  </div> -->
+
+  <div data-role="main" class="ui-content" id="page-main" style="padding: 0px; height: 100%; overflow: auto !important;">
+  	<table style="width: 100%;">
+  	<tr>
+  	<td style="width: 25%; vertical-align: top;">
+  	<ul id="tpForWeekTable">
+  	
+  	<li id="tpForWeekCaption" class="title"></li>
+  	
+  	<!-- <li style="padding: 0px;" class="tpNormalRow">
+  	<table>
+  	<tr><td width="40%" height="100%" class="leftCell" id="leftCell">
+	<table id="innerDay" style="height: 100%;width : 100%; cellspacing : 0; cellpadding : 0;"><tr><td valign="top" align="center"><div class="tpdetails" >Saturday</div></td></tr><tr><td align="center"><div class="tpdates">3</div></td></tr><tr><td valign="bottom" align="center"><div class="tpdetails">August 2910</div></td></tr></table>
+	</td>
+	<td id="rightCell" class="rightCell">
+	<table cellspacing="0" cellpadding="0"  width="100%" ><tr><td ><div class="tpdetails" >ldsf</div></td></tr><tr><td><div class="tpdetails">dk</div></td></tr><tr><td><div class="tpdetails">ksdjf</div></td></tr><tr><td><div class="tpdetails">6</div></td></tr></table>
+	</td></tr>
+	</table>
+	</li> -->
+  	<!-- <li class="sub-title">Today</li>
+  	
+  	<li class="selected" style="padding: 0px;"><a data-role="button" style="margin: 0px;" data-corners="false">
+  	<table>
+  	<tr>
+  	<td><img src="plan.gif" width="100px" height="100px" /></td>
+  	<td style="padding-left: 10px;">No Tour Plan Available</td>
+  	</tr>
+  	</table>
+  	</a></li>
+  	
+  	<li class="sub-title">Later</li>
+  	
+  	<li><div>
+  	<table>
+  	<tr>
+  	<td><img src="plan.gif" width="100px" height="100px" /></td>
+  	<td style="padding-left: 10px;">No Tour Plan Available</td>
+  	</tr>
+  	</table>
+  	</div></li> -->
+  	
+  	</ul>
+  	</td>
+  	
+  	<td style="width: 75%; vertical-align: top; background-color: #E4E8EA;">
+  		<table style="width: 100%;" class="alphabets">
+  			<tr>
+  			<td style="padding: 10px" colspan="2">
+  				<table>
+  				<tr>
+  				<td><div id="alphabets-div" data-role="controlgroup" data-type="horizontal" data-theme="a">
+  				</div></td>
+  				</tr>
+  				</table>
+  			</td>
+  			</tr>
+  			
+  			<tr>
+  			<td style="padding: 10px;">
+  			<table id="doctorTable" style="width: 100%; background-color: #F1F2F2; border: 1px solid #cccccc; box-shadow: 1px 1px 5px #3f464c; padding: 10px;">
+  			<tr>
+  			<td>
+  			<h4 id="doctorTableCaption"></h4>
+  			</td>
+  			</tr>
+  			</table>
+  			</td>
+  			</tr>
+  			
+  			<!-- <tr>
+  			<td width="50%" class="tableDoctorItem">
+  				<table style="padding: 10px; width: 99%; margin: 5px; border: 1px solid #E4E8EA; box-shadow: 1px 1px 5px #3f464c; ">
+  				<tr>
+  				<td style="border: 1px solid #CCCCCC; width: 100px;"><img src="Passports-Center.jpg" width="100px" height="100px" /></td>
+  				<td style="vertical-align: top; padding: 5px;">
+  				<label style="font-weight: bold;">Barak Obama</label><br />
+  				<label class="small-gray" style="color: #4F535A;">President, USA</label>
+  				</td>
+  				</tr>
+  				</table>
+  			</td>
+  			<td width="50%" class="tableDoctorItem">
+  				<table style="padding: 10px; width: 99%; margin: 5px; border: 1px solid #E4E8EA; box-shadow: 1px 1px 5px #3f464c; ">
+  				<tr>
+  				<td style="border: 1px solid #CCCCCC; width: 100px;"><img src="Passports-Center.jpg" width="100px" height="100px" /></td>
+  				<td style="vertical-align: top; padding: 5px;">
+  				<label style="font-weight: bold;">Adolf Hitler</label><br />
+  				<label class="small-gray" style="color: #4F535A;">Dictator, Germany</label>
+  				</td>
+  				</tr>
+  				</table>
+  			</td>
+  			</tr> -->
+  			
+		</table>
+	</td>
+	</tr>
+  	</table>
+  </div>
+
+<!-- <div data-role="popup" class="popupProd" id="popupDoctor" class="ui-content"
+	data-overlay-theme="a" data-theme="d" data-corners="false" style="z-index: 1005; overflow-y : auto; overflow-x : hidden; padding: 20px;">
+	<table id='doctor360Table'>
+		<tr>
+			<td style=" text-align: right;">
+				<a href="#popupDoctor" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			</td>
+		</tr>
+		<tr>
+			<td><div id="doctorHeader">
+					<h3>Doctor Details</h3>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><div id="divdoctorDetails"></div></td>
+		</tr>
+		
+		<tr>
+			<td><div id="campaignHeader">
+					<h3>Campaign Details:</h3>
+				</div></td>
+		</tr>
+
+		<tr>
+			<td><div id="divcampaign_list"></div></td>
+		</tr>
+		
+		<tr>
+			<td><div id="visitHeader">
+					<h4>Last 3 Visits</h4>
+				</div></td>
+		</tr>
+
+		<tr>
+			<td><div id="divlast3visit"></div></td>
+		</tr>
+					<tr>
+			<td><div id="productHeader">
+					<h4>Product Mapping Details</h4>
+				</div></td>
+		</tr>
+		<tr>
+			<td><div id="divproduct_details"></div></td>
+		</tr>
+		<tr>
+		<td><div id="sampleHeader">
+				<h4>Product and Sample Details:</h4>
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="divnonsample_details"></div></td>
+		</tr>
+		<tr>
+			<td><div id="chemistHeader">
+					<h4>Chemist Visited:</h4>
+				</div></td>
+		</tr>
+		<tr>
+			<td><div id="divchemist_details"></div></td>
+		</tr>
+		<tr>
+			<td><div id="rcpaHeader">
+					<h4>RCPA</h4>
+				</div></td>
+		</tr>
+		<tr>
+			<td><div id="divrcpa"></div></td>
+		</tr>
+		<tr>
+			<td><div id="mappedHeader">
+					<h4>Product Mapping Details:</h4>
+				</div></td>
+		</tr>
+		<tr>
+			<td><div id="divmapped_details"></div></td>
+		</tr>
+		<tr>
+			<td><div id="remarkHeader">
+					<h4>Remarks:</h4>
+				</div></td>
+		</tr>
+		<tr>
+			<td><div id="divremarks_details"></div></td>
+		</tr>			
+	</table>
+</div> -->
+
+<div data-role="popup" id="tagDoctorPopup" class="ui-content"  data-corners="false" data-overlay-theme="d" data-theme="d" data-shadow="true" 
+				style="width:600px; height:400px; border: 3px; border-bottom-style: solid; border-bottom-color: blue; padding-left: 20px; padding-right: 10px">
+	<h1><span style="width:600px;text-align: center"><label id="tagHeading"></label></span></h1><br/>
+	<table style="height:300px;width:100%">
+		<tr>
+			<td id="tagCell" style="border:1px ;border-color:black;border-style:solid;width:100%;height:250px" valign="top" >
+				<ul id="mytags"></ul>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" style="height:50px">
+				<button data-corners="false" data-inline="true" onclick=' $("#tagDoctorPopup").popup("close")'>Close</button>
+			</td>
+		</tr>
+	</table>
+</div>
+</div> 
+<p class="copy_right"> &copy; Powered by SwaaS</p>
+</body>
+</html>

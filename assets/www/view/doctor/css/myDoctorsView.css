@@ -1,0 +1,85 @@
+table, tbody, tr, td { border-spacing: 0px; padding: 0px;}
+.ui-grid-a {
+	margin: 0px;
+}
+.ui-grid-a .ui-block-a {
+	width: 74.95%; 
+	text-align: center;
+}
+.ui-grid-a .ui-block-b {
+	width: 24.95%; 
+	text-align: center;
+}
+.ui-btn-inner {
+	padding: 30px;
+}
+.ui-input-search {
+	display: inline-block;
+	float: right;
+	margin-right: 37px;
+}
+.ui-panel-inner {
+	padding: 0px !important;
+}
+a {
+	/* color: white; */
+	text-decoration: none;
+}
+
+#md-right-panel ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#md-right-panel li.title {
+	color: white; 
+	padding: 10px; 
+	font-size: 20px; 
+	background-color: #3f464c
+}
+
+#md-right-panel li.sub-title {
+	color: black; 
+	padding: 10px; 
+	font-size: 20px; 
+	background-color: #D1D3D4;
+}
+
+#md-right-panel li {
+	padding: 10px; 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+table.alphabets td button {
+	border: 1px solid #cccccc;
+	background-color: #3f464c;
+	padding: 15px; 
+	color: white;
+}
+.selected {
+    background-color: #0073b1;
+    color: white;
+}
+
+#right-panel-btn {
+	margin-top: 15px;
+}
+
+.accordion_css3_support {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transform: translate3d(0,0,0);
+        -webkit-transition: all 0.5s linear;
+        transform: translate3d(0,0,0);
+        transition: all 0.5s linear;
+        -webkit-backface-visibility:hidden;
+        -webkit-perspective: 1000;
+}
+ 
+.children.animated {
+        max-height: 1000px;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+}

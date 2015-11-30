@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- iScroll 4 -->
+<script type="text/javascript" charset="utf-8"
+	src="../../iscroll4/iscroll.js"></script>
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8" src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>	
+
+<!-- DCR -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/user/UserService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/SaleProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/doctor/DoctorService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/AccompanistLocalDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/AnalyticsDetailedProductsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/AnalyticsDoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/tourplan/TPProductLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/DoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRHeaderAccompanistLocalDAO.js"></script>
+
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/ChemistVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/customer/CustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRConfigSettingsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRPrivilegeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDoctorAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRDetailedProductsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/SelectedAccompanistLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>	
+
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/dcr/DCRService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/product/ProductService.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/Doctor360RemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../doctor360/doctor360.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/DoctorTagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/doctor/DoctorTagLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../tagedit/js/jquery-ui-1.8.autocomplete.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../tagedit/js/tag-it2.js"></script>
+<link rel="stylesheet"	href="../tagedit/css/jquery.ui.autocomplete.custom.css" />
+
+<script type="text/javascript" charset="utf-8" src="./dcrNew.js"></script>
+<script type="text/javascript" charset="utf-8" src="./AutoComplete.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="./DCRProductInput.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="./ChemistInputNew.js"></script>
+<script type="text/javascript" charset="utf-8" src="./SalesInput.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="./CompetitorInput.js"></script>
+<!-- time picker -->
+<link type="text/css" href="../timePicker/jqm-datebox.min.css"
+	rel="stylesheet" />
+<!-- NOTE: Script load order is significant! -->
+<script type="text/javascript"
+	src="../timePicker/jqm-datebox.core.min.js"></script>
+<script type="text/javascript"
+	src="../timePicker/jqm-datebox.mode.datebox.min.js"></script>
+<script type="text/javascript"
+	src="../timePicker/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+
+<!-- checking internet -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>
+<!-- Error -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/log/ErrorLogLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+
+<script type="text/javascript" charset="utf-8"
+	src="../components/DoctorTableNew.js"></script>
+<script type="text/javascript" charset="utf-8" src="./QuantityInput.js"></script>
+
+<link rel="stylesheet"
+	href="dcr.css" />
+	
+<style>
+div, label, table, td, tr {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+	color: black !important;
+	/* border: none; */
+	/* background-color: #388BBF !important; */
+}
+#popup_more_wrapper { background: rgba(0,0,0,0.7);
+    position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px;
+    z-index: 9999;
+}
+.popup_more { width: 70%; background-color: #e2e2e2;
+    position: absolute; margin-left: 50%; left: -35%;
+}
+
+#popup_more_wrapper,#popup_more_wrapper * {
+	color: #000;
+}
+.popup_more .close_btn {
+    position:absolute;
+    top:0px;
+    right:0px;
+    background: #000;
+    color: #fff;
+    border-radius: 10%;
+    -webkit-border-radius: 50px;
+    width: 15px;
+    height: 15px;
+    text-align:center;
+}
+.popup-content { overflow-y: scroll; }
+</style>
+</head>
+<script>
+	document.addEventListener("deviceready",
+			com.swaas.hidoctor.edetailing.ui.view.Dcr.init, false);
+</script>
+<body>
+	<div data-role="page" data-theme="b">
+		<div id="header"></div>
+
+		<div class="ui-grid-a ui-responsive" id="mainGrid">
+			<div class="ui-block-a" id="attendeceFieldDiv" style="max-width: 84px">
+				<div id="homeDiv" style="height:60px;">	
+					<div style="position:absolute;text-align:right;top:0px;left:px" >
+							<img src="../../hidoctor/images/wide-angle-logo.png" width="80px" onclick="ED.redirectToHome();">
+					</div>
+				</div>
+				
+				<div id="fieldDiv" class="selectedTab1" style="height:120px;">	
+					<div  class="vertical_text" style="width:14px;top:80px;">	
+						<label style="color: #333333 !important; font-size: 16px !important; text-shadow: none;">Field</label>
+					</div>
+					<div style="position:absolute;text-align:right;top:120px;left:22px" >
+							<img src="images/FieldMedicalBag.png" width="60px">
+					</div>
+				</div>
+				
+				<div id="attendanceDiv" class="unSelectedTab1" style="height:120px;" onclick="ED.redirect('view/dcr/attendance.html');">	
+					<div  class="vertical_text" style="width:14px;top:110px;">	
+						<label style="color: #333333 !important; font-size: 16px !important; text-shadow: none;">Attendance</label>
+					</div>
+					<div style="position:absolute;text-align:right;top:240px;left:22px" >
+							<img src="images/Attandance.png" width="60px">
+					</div>
+				</div>
+			
+			</div>
+			<div class="ui-block-b" id="selectDiv"
+				style="min-width: 90%; background-color: #388BBF;">
+				<div class="ui-grid-solo">
+					<label style="font-size: 20px;">DCR Date : </label>
+					<label style="font-size: 20px;" id="dcrDate"></label>
+					<label style="font-size: 20px;"> | Activity Name : Field</label>
+					<label style="font-size: 16px; font-weight : bold;color : #FFFFED; padding : 5px 5px 5px 5px; " id="dcrHeadMessage"></label>
+				</div>
+				<div class="ui-grid-a" >
+					<table style="width:100%">
+						<tr>
+							<td class="ui-block-a" style="width: 35%">
+									<div id="doctorNameLabel" class="ui-grid-solo">
+										<label style="font-size: 14px;" id="doctorLabel">Loading...</label>
+									</div>
+									<div id="doctorDisplay" class="ui-grid-solo">
+										<table id="doctorTable" width="100%" style="border-spacing: 0px"></table>
+									</div>
+									<div style="text-align:right">
+										<input type="button" id="addDoctor"
+											onclick="com.swaas.hidoctor.edetailing.ui.view.Dcr.showAddDoctorPopup();"
+											value="&nbsp;&nbsp;&nbsp;Add customer&nbsp;&nbsp;&nbsp;" data-mini="true" data-theme="b" data-inline="true"
+											style="min-width: 200px;" data-corners="false" />
+									</div>
+							</td>
+							<td style="width: 65%;background-color:#2D3844;margin: 0; border: 0; padding-left: 10px; float: left; min-height: 500px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;">
+								<div id="doctorVisitDetailDiv" style="display:none">
+								<form id="dcrPersist">
+									<label style="font-size: 16px;" id="doctorvalues">Loading...</label>
+									<table style="width:99%">
+										<tr>
+											<td width="15%" valign="middle">
+												<label style="font-size: 16px;" id="specialitylabel">Speciality</label>
+											</td>
+											<td width="15%">
+												<div id="specialityDiv">
+													<div class="ui-block-b"
+														id="specialityInputDiv"></div>
+												</div>
+											</td>
+											
+											<td width="15%" valign="middle" nowrap="nowrap">
+												<label style="font-size: 16px;" id="lblvisitTime">Visit Time</label>
+											</td>
+											<td width="20%" valign="middle">
+												<div style="display:none" id="visitTimeEntryDiv">
+													<input id="visitTimeEntry" name="visitTimeEntry" type="time"
+														data-role="datebox" style="display: none;" data-theme="b"
+														data-options='{"mode": "timebox"}'/>
+												</div>
+												<div style="display:none" id="visitTimeDiv">
+													<label id="visitTime"></label>
+													
+												</div>
+												<div style="display:none" id="timeRadioDiv">
+													<select name="timeRadio" id="timeRadio" data-role="slider" data-theme="b" data-track-theme="d">
+												    	<option value="AM">AM</option>
+												    	<option value="PM">PM</option>
+											  		</select>
+												</div>
+											</td>
+											
+											<td width="10%" valign="middle" align:"right">
+												<label style="font-size: 16px;" id="poblabel">POB&nbsp;&nbsp;</label>
+											</td>
+											<td width="15%">
+												<input type="number" name="POB" id="pob" min="1" data-mini="true" data-corners="false"
+														data-theme="c" value="1" />
+											</td>
+										</tr>
+									</table>
+									
+									<table style="width:99%; border-spacing:0px; padding:0px">
+										<tr>
+											<td style="background-color: #0F0F0F;">
+												<label style="font-size: 18px;" id="accompanistlabel">Loading...</label>
+											</td>
+										</tr>
+										<tr>
+											<td id="accompanistDiv" style="background-color: #333233;">
+												<ol id='accompanistOL' style="font-size: 16px;">
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td style="background-color: #333233;text-align:right">
+												<input type="button" id="btnAddAccompanist" data-mini="true"
+													data-theme="b" style="width: 120px" data-inline="true"
+													data-corners="false"
+													onclick="com.swaas.hidoctor.edetailing.ui.view.Dcr.showAccompanistPopup();"
+													value="Add Accompanist" />
+											</td>
+										</tr>
+									</table>
+									<br/>
+									<table style="width:99%; border-spacing:0px; padding:0px">
+										<tr>
+											<td style="background-color: #0F0F0F;">
+												<label style="font-size: 18px;" id="lblinputs">Loading...</label>
+											</td>
+										</tr>
+										<tr>
+											<td id="productInputDiv" style="background-color: #333233;">
+												<ol style="font-size: 16px;">
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td style="background-color: #333233;text-align:right">
+												<input type="button" id="btnAddInput" data-mini="true"
+													data-inline="true" data-theme="b" style="width: 120px;"
+													onclick="com.swaas.hidoctor.edetailing.ui.view.Dcr.showInputPopup();"
+													data-corners="false" onclick="" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+											</td>
+										</tr>
+									</table>
+									<br/>
+									<table style="width:99%; border-spacing:0px; padding:0px">
+										<tr>
+											<td style="background-color: #0F0F0F;">
+												<label style="font-size: 18px;" id="detailedlabel">Loading...</label>
+											</td>
+										</tr>
+										<tr>
+											<td id="detailedInputDiv" style="background-color: #333233;">
+												<ol style="font-size: 16px;">
+												</ol>
+											</td>
+										</tr>
+										<tr>
+											<td style="background-color: #333233;text-align:right">
+												<input type="button" id="btnAddDetailedInput" data-mini="true"
+													data-inline="true" data-theme="b" style="width: 120px"
+													onclick="com.swaas.hidoctor.edetailing.ui.view.Dcr.showDetailedProductPopup();"
+													data-corners="false" onclick="" value="&nbsp;&nbsp;&nbsp;Add Product&nbsp;&nbsp;&nbsp;" />
+											</td>
+										</tr>
+									</table>
+									
+									<br/>
+									
+		
+									<div style="background-color: #0F0F0F;width:99%">
+										<label style="font-size: 18px;" id="lblchemists">Loading...</label>
+									</div>
+									<div id="chemistInputDiv"
+										style="overflow: hidden; position: relative; border-collapse: collapse;width:99%">
+										<div id="chemistInputHeaderDiv"
+										style="overflow: scroll; position: relative; border-collapse: collapse;width:99%">
+											<table id="chemistSelectTable"
+												style="width: 100%; border: none; padding: 0px;">
+												<tr id="chemistSelectTableTR">
+												</tr>
+											</table>
+										</div>
+										<table id="chemistDetailTable"
+											style="width: 100%; background-color: #388BBF; border-collapse: collapse; display: none;">
+											<tr>
+												<td style="background-color: #388BBF;"><label
+													id="chemistNameLabel" style="font-size: 16px;"></label></td>
+											</tr>
+											<tr>
+												<td style="background-color: #388BBF;">
+													<table style="width:100%">
+														<tr>
+															<td width="10%">
+																<label style="font-size: 16px;" id="poblabel">POB</label>
+															</td>
+															<td width="30%">
+																
+																<input type="number" name="POB" id="chemistPob" min="1" data-inline="true"
+																	data-theme="c" data-corners="false" value="1"/>
+															</td>
+															<td width="60%">
+																&nbsp;
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+										
+										<div id="rcpaDiv"
+											style="overflow: hidden; position: relative; display: none;">
+											<table id="rcpaTable" 
+												style="width: 100%; border: none;border-collapse:collapse;font-size: 20px;">
+												<tr style="background-color: #2A4b74;">
+													<th align="left"><label>Sale product</label></th>
+													<th><label>Qty</label></th>
+													<th align="left"><label>Competitor Product</label></th>
+													<th colspan="2"></th>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<div class="btnAddChemistProductDiv"
+										style="display: none; text-align: right; background-color: #388BBF; width:99%">
+										<input type="button" id="btnAddChemistProduct" data-mini="true"
+											data-inline="true" data-theme="b" style="width: 120px"
+											data-corners="false" value="&nbsp;&nbsp;&nbsp;Add Product&nbsp;&nbsp;&nbsp;" />
+																	
+									</div>
+									<br/>
+									
+									<table style="background-color: #0F0F0F;width:99%;">
+										<tr>
+											<td style="background-color: #0F0F0F;">
+												<label style="font-size: 16px;" id="lblremarks"></label>
+											</td>
+										</tr>
+										<tr>
+											<td style="background-color: #333233;">
+												<textarea id="remarks" data-theme="b" maxlength="100"
+													placeholder="Enter your remarks here"></textarea>
+											</td>
+										</tr>
+									</table>
+									<br/>
+									<table style="width:99%;">
+										<tr>
+											<td align="right">
+												<input type="button" id="btnPersist" data-mini="true"
+													data-inline="true" data-theme="b"
+													data-corners="false" onclick="com.swaas.hidoctor.edetailing.ui.view.Dcr.onSave();" 
+													value="Save Doctor Visit" />
+											</td>
+										</tr>
+									</table>
+											
+									<div style="text-align: right;width:99%">
+										
+									</div>
+								</form>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<div id="showAddAccompanist" data-role="popup" data-position-to="window" class="popupProd" class="ui-content"
+			data-overlay-theme="a" data-theme="a" data-position-to="window" data-corners="false"
+			style="z-index: 1005; height: 260px; width: 500px;">
+			<a href="#" data-rel="back" data-role="button" data-theme="r"
+				data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div class="ui-grid-solo"
+				style="border-bottom-width: 3px; border-bottom-color: #266389; border-bottom-style: solid;padding:10px">
+				<label style="font-size: 18px;">Choose Your Accompanist</label>
+			</div>
+			<table style="min-height: 150px; width:500px;padding:10px">
+				<tr>
+					
+					<td colspan="2" width="300px"><select id="selectAccompanist" data-theme="b" 
+						data-corners="false" data-mini="true"></select></td>
+				</tr>
+				<tr>
+					<td style="font-size: 18px;width:30%"><label>Independent</label></td>
+					<td><input style="margin:2px;" type="checkbox" name="doctorCall" id="doctorCall"
+						data-mini="true" data-theme="b" /></td>
+				</tr>
+				
+			</table>
+			<div class="ui-grid-solo"
+				style="border-top-width: 2px; border-top-color: grey; border-top-style: solid; text-align:right">
+				<input type="button" id="saveInputAccompanist" 
+							data-theme="b" style="width: 100px" data-inline="true"
+							data-corners="false" value="Add Accompanist" />
+			</div>
+		</div>
+	
+		<div id="showAddInputPopup" data-role="popup" data-position-to="window" class="popupProd" class="ui-content"
+			data-overlay-theme="a" data-theme="a" data-position-to="window" data-corners="false"
+			style="z-index: 1005; height: 260px; width: 500px;">
+			
+			<a href="#" data-rel="back" data-role="button" data-theme="r"
+				data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div class="ui-grid-solo"
+				style="border-bottom-width: 3px; border-bottom-color: #266389; border-bottom-style: solid;padding:10px">
+				<label style="font-size: 18px;">Add Input</label>
+			</div>
+			
+			<table style="min-height: 150px; width:500px;padding:10px">
+				<tr>
+					
+					<td colspan="2" width="100%">
+						<div>
+							<div id="inputProductDiv"  class="ui-block-b"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="font-size: 16px;width:20%"><label>Quantity</label></td>
+					<td><div id="inputProductQuantityDiv"></div></td>
+				</tr>
+				
+				<tr id="detailedCheckBox">
+					<td style="font-size: 16px;width:20%"><label>Detailed</label></td>
+					<td><input type="checkbox" name="inputProductDetailed" id="inputProductDetailed"></td>
+				</tr>
+				
+			</table>
+			
+			
+			<div class="ui-grid-solo"
+				style="border-top-width: 2px; border-top-color: grey; border-top-style: solid;text-align:right">
+				<input type="button" id="saveInputProduct" data-mini="true"
+					data-theme="b" style="width: 100px" data-inline="true"
+					data-corners="false" value="Add Input" />
+			</div>
+			
+		</div>
+		
+		<div id="showAddDetailedProductPopup" data-role="popup" data-position-to="window" class="popupProd" class="ui-content"
+			data-overlay-theme="a" data-theme="a" data-position-to="window" data-corners="false"
+			style="z-index: 1005; height: 260px; width: 500px;">
+			
+			<a href="#" data-rel="back" data-role="button" data-theme="r"
+				data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div class="ui-grid-solo"
+				style="border-bottom-width: 3px; border-bottom-color: #266389; border-bottom-style: solid;padding:10px">
+				<label style="font-size: 16px;">Add Product</label>
+			</div>
+			
+			<table style="min-height: 150px; width:500px;padding:10px">
+				<tr>
+					
+					<td colspan="2" width="100%">
+						<div>
+							<div id="detailedProductDiv"  class="ui-block-b"></div>
+						</div>
+					</td>
+				</tr>
+				
+				
+			</table>
+			
+			
+			<div class="ui-grid-solo"
+				style="border-top-width: 2px; border-top-color: grey; border-top-style: solid;text-align:right">
+				<input type="button" id="saveDetailedProduct" data-mini="true"
+					data-theme="b" style="width: 100px" data-inline="true"
+					data-corners="false" value="Add Product" />
+			</div>
+			
+		</div>
+		
+		<div id="showAddRCPAPopup" data-role="popup" data-position-to="window" class="popupProd" data-position-to="window"
+			class="ui-content" data-overlay-theme="a" data-theme="a" data-corners="false"
+			style="z-index: 1005; min-height: 260px; width: 500px;">
+			<a href="#" data-rel="back" data-role="button" data-theme="r"
+				data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div class="ui-grid-solo"
+				style="border-bottom-width: 2px; border-bottom-color: #4a85bf; border-bottom-style: solid;">
+				<label style="font-size: 18px;">Add RCPA</label>
+			</div>
+			<table style="border: none;width:100%;">
+				<tr>
+					<td>
+						<table style="width:100%;">
+							<tr>
+								<td><label id="chemistNameSalesLabel"
+									style="font-size: 16px;">Chemist</label></td>
+								<td><label id="chemistNameSales" style="font-size: 16px;"></label></td>
+							</tr>
+							<tr>
+								<td><label id="chemistSalesLabel" style="font-size: 16px;">Product</label></td>
+								<td><div id="chemistSalesInputDiv" class="ui-block-b"></div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table  style="width:100%;">
+							<tr>
+								<td>
+									<label style="font-size: 16px;">Quantity</label>
+								</td>
+								<td>
+									<div id="saleProductQuantityDiv"></div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="competitorProductDiv">
+							<table>
+								<tr>
+									<th align="left"><br/><label style="font-size:16px" id="competitorProductLabel"></label></th>
+									
+								</tr>
+								<tr id="chemistRCPAInputList">
+									<td colspan="2"><div id="chemistRCPAInput" data-tdeme="a"></div></td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="ui-grid-solo"
+							style="border-top-width: 2px; border-top-color: grey; border-top-style: solid;text-align:right">
+							<input type="button" id="saveRCPA" data-mini="true"
+								data-theme="b" style="width: 100px" data-inline="true"
+								data-corners="false" value="Add RCPA" />
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		
+
+		<div id="showAddChemistPopup" data-role="popup" data-position-to="window" class="popupProd" class="ui-content"
+			data-overlay-theme="a" data-theme="a" data-position-to="window" data-corners="false"
+			style="z-index: 1005; height: 260px; width: 500px;">
+			
+			<a href="#" data-rel="back" data-role="button" data-theme="r"
+				data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div class="ui-grid-solo"
+				style="border-bottom-width: 3px; border-bottom-color: #266389; border-bottom-style: solid;padding:10px">
+				<label style="font-size: 18px;">Add Chemist</label>
+			</div>
+			
+			<table style="min-height: 150px; width:500px;padding:10px">
+				<tr>
+					
+					<td colspan="2" width="100%">
+						<div>
+							<div id="selectChemistDiv"  class="ui-block-b"></div>
+						</div>
+					</td>
+				</tr>
+				
+				
+			</table>
+			
+			
+			<div class="ui-grid-solo"
+				style="border-top-width: 2px; border-top-color: grey; border-top-style: solid;text-align:right">
+				<input type="button" id="saveChemist" data-mini="true"
+					data-theme="b" style="width: 100px" data-inline="true"
+					data-corners="false" value="Add Chemist" />
+			</div>
+			
+		</div>
+		
+		
+		
+		<div id="showAddDoctors" data-role="popup" data-position-to="window"
+			class="popupProd" class="ui-content" data-overlay-theme="a"
+			data-theme="a" data-position-to="window" data-corners="false"
+			style="z-index: 1005; width: 500px; height: 300px;padding: 5px; ">
+			<a href="#" data-rel="back" data-role="button" data-theme="r"
+				data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<div class="ui-grid-solo"
+				style="border-bottom-width: 2px; border-bottom-color: #4a85bf; border-bottom-style: solid;">
+				<label style="font-size: 20px;">Add Doctor</label>
+			</div>
+			<table>
+				<tr>
+					<td><div data-role="fieldcontain">
+							<fieldset data-role="controlgroup">
+								<legend style="white-space: nowrap; font-size: 20px;">
+									Choose doctors from: </legend>
+									<select id="selectAccompanistForDoctor" data-theme="b" data-corners="false" data-mini="true"></select>									
+							</fieldset>
+						</div></td>
+				</tr>
+				<tr>
+					<td>
+						<div id="selectMyDoctorDiv" style="display: none;"></div>
+						<div id="selectAccompanistDoctorDiv" style="display: none;"></div>
+						</td>
+				</tr>
+			</table>
+			<div class="ui-grid-solo"
+				style="border-top-width: 2px; border-top-color: grey; border-top-style: solid;text-align:right; padding: 5px;">
+				<input type="button" id="saveAddDoctor" data-mini="true"
+					data-theme="b" style="width: 100px" data-inline="true"
+					data-corners="false" value="Add Doctor" />
+			</div>
+
+		</div>
+		<!-- <div data-role="popup" class="popupProd" id="popupDoctor" class="ui-content"
+			data-overlay-theme="a" data-theme="d" data-corners="false" style="z-index: 1005; overflow-y : auto; overflow-x : hidden; padding: 20px;">
+			<table id='doctor360Table'>
+				<tr>
+					<td style=" text-align: right;">
+						<a href="#popupDoctor" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+					</td>
+				</tr>
+				<tr>
+					<td><div id="doctorHeader">
+							<h3>Doctor Details</h3>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td><div id="divdoctorDetails"></div></td>
+				</tr>
+				
+				<tr>
+					<td><div id="campaignHeader">
+							<h3>Campaign Details:</h3>
+						</div></td>
+				</tr>
+
+				<tr>
+					<td><div id="divcampaign_list"></div></td>
+				</tr>
+				
+				<tr>
+					<td><div id="visitHeader">
+							<h4>Last 3 Visits</h4>
+						</div></td>
+				</tr>
+
+				<tr>
+					<td><div id="divlast3visit"></div></td>
+				</tr>
+							<tr>
+					<td><div id="productHeader">
+							<h4>Product Mapping Details</h4>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div id="divproduct_details"></div></td>
+				</tr>
+				<tr>
+				<td><div id="sampleHeader">
+						<h4>Product and Sample Details:</h4>
+					</div></td>
+				</tr>
+				<tr>
+					<td><div id="divnonsample_details"></div></td>
+				</tr>
+				<tr>
+					<td><div id="chemistHeader">
+							<h4>Chemist Visited:</h4>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div id="divchemist_details"></div></td>
+				</tr>
+				<tr>
+					<td><div id="rcpaHeader">
+							<h4>RCPA</h4>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div id="divrcpa"></div></td>
+				</tr>
+				<tr>
+					<td><div id="mappedHeader">
+							<h4>Product Mapping Details:</h4>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div id="divmapped_details"></div></td>
+				</tr>
+				<tr>
+					<td><div id="remarkHeader">
+							<h4>Remarks:</h4>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div id="divremarks_details"></div></td>
+				</tr>			
+			</table>
+		</div> -->
+
+		<div data-role="popup" id="tagDoctorPopup" class="ui-content"  data-corners="false" data-overlay-theme="d" data-theme="d" data-shadow="true" 
+				style="width:600px; height:400px; border: 3px; border-bottom-style: solid; border-bottom-color: blue; padding-left: 20px; padding-right: 10px">
+			<h1><span style="width:600px;text-align: center"><label id="tagHeading"></label></span></h1><br/>
+			<table style="height:300px;width:100%">
+				<tr>
+					<td id="tagCell" style="border:1px ;border-color:black;border-style:solid;width:100%;height:250px" valign="top" >
+						<ul id="mytags"></ul>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" style="height:50px">
+						<button data-corners="false" data-inline="true" onclick=' $("#tagDoctorPopup").popup("close")'>Close</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+	</div>
+<p class="copy_right"> &copy; Powered by SwaaS</p>
+</body>
+</html>

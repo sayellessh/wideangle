@@ -1,0 +1,25 @@
+.selectedTab1 {
+	background-color: #388BBF;
+	
+}
+
+.unSelectedTab1 {
+	border-top:1px solid gray;
+	border-bottom:1px solid gray;
+	border-right:1px solid gray;
+}
+
+
+.ui-corner-all {
+	-webkit-border-radius: 				.0em /*{global-radii-blocks}*/;
+	border-radius: 						.0em /*{global-radii-blocks}*/;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+}

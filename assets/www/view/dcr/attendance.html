@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8" src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>	
+
+<!-- DCR -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/user/UserLocalDAO.js"></script>
+	
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/attendance/ActivityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/attendance/ExpenseEntityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/attendance/TimeSheetEntryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/dcr/DCRConfigSettingsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>	
+
+<script type="text/javascript" charset="utf-8"
+	src="../../service/attendance/AttendanceService.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="./attendance.js"></script>
+
+<!-- time picker -->
+<link type="text/css" href="../timePicker/jqm-datebox.min.css"
+	rel="stylesheet" />
+<!-- NOTE: Script load order is significant! -->
+<script type="text/javascript"
+	src="../timePicker/jqm-datebox.core.min.js"></script>
+<script type="text/javascript"
+	src="../timePicker/jqm-datebox.mode.datebox.min.js"></script>
+<script type="text/javascript"
+	src="../timePicker/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+
+<!-- Error -->
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/log/ErrorLogLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+
+
+<link rel="stylesheet"
+	href="dcr.css" />
+<style>
+div, label, table, td, tr {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+	color: black !important;
+	/* border: none; */
+	/* background-color: #388BBF !important; */
+}
+</style>
+</head>
+<script>
+	document.addEventListener("deviceready",
+			com.swaas.hidoctor.edetailing.ui.view.Attendance.init, false);
+</script>
+<body>
+	<div data-role="page" data-theme="b">
+		<div id="header"></div>
+
+		<div class="ui-grid-a ui-responsive" id="mainGrid">
+			<div class="ui-block-a" id="attendeceFieldDiv" style="max-width: 83px">
+				<div id="homeDiv" style="height:60px;">	
+					<div style="position:absolute;text-align:right;top:0px;left:px" >
+							<img src="../../hidoctor/images/wide-angle-logo.png" width="80px" onclick="ED.redirectToHome();">
+					</div>
+				</div>
+				
+				<div id="fieldDiv" class="unSelectedTab1" style="height:120px;" onclick="ED.redirect('view/dcr/dcrNew.html');">	
+					<div  class="vertical_text" style="width:14px;top:80px;">	
+						<label style="color: #333333 !important; font-size:16px">Field</label>
+					</div>
+					<div style="position:absolute;text-align:right;top:120px;left:22px" >
+							<img src="images/FieldMedicalBag.png" width="60px">
+					</div>
+				</div>
+				
+				<div id="attendanceDiv" class="selectedTab1" style="height:120px;">	
+					<div  class="vertical_text" style="width:14px;top:110px;">	
+						<label style="color: #333333 !important; font-size:16px">Attendance</label>
+					</div>
+					<div style="position:absolute;text-align:right;top:240px;left:22px" >
+							<img src="images/Attandance.png" width="60px">
+					</div>
+				</div>
+			
+			</div>
+			<div class="ui-block-b" id="selectDiv"
+				style="min-width: 90%; background-color: #388BBF;">
+				<div class="ui-grid-solo">
+					<label style="font-size: 20px;">DCR Date : </label>
+					<label style="font-size: 20px;" id="dcrDate"></label>
+					<label style="font-size: 20px;"> | Activity Name : Attendance</label>
+				</div>
+				<div class="ui-grid-a" >
+					<table style="width:100%">
+						<tr>
+							<td class="ui-block-a" style="width: 5%">
+									
+							</td>
+							<td style="width: 95%;background-color:#2D3844;margin: 0; border: 0; padding-left: 10px; float: left; min-height: 500px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;">
+								<div id="doctorVisitDetailDiv" style="display:block">
+								<form id="dcrPersist">
+									<table style="width:99%">
+										<tr>
+											<td width="20%">Start Time</td>
+											<td width="20%">
+												<input type="time" id="startTime" 
+													data-role="datebox" style="display: none;" data-theme="b"
+													data-options='{"mode": "timebox"}' />
+											</td>
+											<td width="20%" align="right">End Time</td>
+											<td width="5%">&nbsp;</td>
+											<td width="20%">
+												<input type="time" id="endTime" 
+													data-role="datebox" style="display: none;" data-theme="b"
+													data-options='{"mode": "timebox"}' />
+											</td>
+										</tr>
+									</table>
+									
+									<table style="width:99%; border-spacing:0px; padding:0px" id="timesheetTable">
+										<tr>
+											<td style="background-color: #0F0F0F;font-size: 18px;width:30%">
+												Activity Name
+											</td>
+											<td style="background-color: #0F0F0F;font-size: 18px;width:15%">
+												Start Time
+											</td>
+											<td style="background-color: #0F0F0F;font-size: 18px;width:15%">
+												End Time
+											</td>
+											<td style="background-color: #0F0F0F;font-size: 18px;width:35%">
+												Remarks
+											</td>
+											<td style="background-color: #0F0F0F;font-size: 18px;width:5%">
+												&nbsp;
+											</td>
+										</tr>
+										
+										
+									</table>
+									<br/>
+									
+									<table style="width:99%;">
+										<tr>
+											<td align="right">
+												<input type="button" id="btnPersist" data-mini="true"
+													data-inline="true" data-theme="b"
+													data-corners="false" onclick="com.swaas.hidoctor.edetailing.ui.view.Attendance.onSave();" 
+													value="Save Attendance" />
+											</td>
+										</tr>
+									</table>
+											
+									<div style="text-align: right;width:99%">
+										
+									</div>
+								</form>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+<p class="copy_right"> &copy; Powered by SwaaS</p>
+</body>
+</html>

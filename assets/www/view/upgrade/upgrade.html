@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet"
+	href="../../jquery.mobile/jquery.mobile-1.3.1.min.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/core/DateFormat.js"></script>
+	
+<!-- PhoneGap -->
+<script type="text/javascript" charset="utf-8"
+	src="../../cordova-2.6.0.js"></script>
+
+<!-- E-Detailing -->
+<link rel="stylesheet" href="../Style.css" />
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Base.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreDAO.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreSOAP.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="../../service/core/CoreREST.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/CoreNET.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/Util.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/CoreView.js"></script>
+<script type="text/javascript" charset="utf-8" 
+	src="../core/MockGeolocation.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../resource/Resource.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../service/core/DateFormat.js"></script>
+	
+<!-- Synchronize -->
+<script type="text/javascript" charset="utf-8" src="upgrade.js"></script>
+<link rel="stylesheet" type="text/css"
+	 href="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.css" />
+<script type="text/javascript" 
+	src="../../jquery.mobile/tolito/progressBar/tolito-1.0.3.min.js"></script>
+
+<!-- Error -->
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogLocalDAO.js"></script>	
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/entity/log/ErrorLogRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/synchronize/ErrorSynchronizeService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/upgrade/UpgradeService.js"></script>
+<script type="text/javascript" charset="utf-8" 
+    src="../../service/user/UserService.js"></script>
+        
+<!-- DAO Tables -->
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/AccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserDivisionLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/configuration/ConfigurationLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPDoctorLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/tourplan/TPSFCLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/speciality/SpecialityLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/brand/BrandLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/ProductLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetResultLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetBillingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DATagAnalyticLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/UserProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorCategoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorTagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/customer/CustomerLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/UniqueProductCodeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/CompetitorProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/ProductsByUserProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/SalesProductRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/McDoctorsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/doctor/DoctorTagLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/CheckSumLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/AssetResultLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DAAnalyticHistoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DenormAssetQueryInputsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DATagMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/user/SelectedAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRConfigSettingsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRPrivilegeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRHeaderLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/AnalyticsDetailedProductsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/AnalyticsDoctorVisitRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DoctorVisitRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DcrDoctorAccompanistRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRDetailedProductsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRProductDetailsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/ChemistVisitRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/RcpaDetailsRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRHeaderAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRDoctorAccompanistLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRDetailedProductsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/division/DivisionEntityMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/DCRProductDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/ActivityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/ExpenseEntityMasterLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/attendance/TimeSheetEntryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/AnalyticsDetailedProductsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/AnalyticsDoctorVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/ChemistVisitLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/dcr/RcpaDetailsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/product/SaleProductMappingLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/AssetMarketingAnalysisLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/synchronize/SynchronizeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/DigitalAssetRemoteDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/upgrade/UpgradeLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/upgrade/UpgradeRemoteDAO.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/ZipAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/StoryAssetLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/asset/StoryLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/htmlsite/SiteAnalyticsLocalDAO.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../service/entity/htmlsite/SiteAssetMasterLocalDAO.js"></script>
+
+
+</head>
+<script>
+document.addEventListener("deviceready", com.swaas.hidoctor.edetailing.ui.view.Upgrade.init);
+</script>
+
+<body>
+	<div id="pageDiv"  data-role="page" id="page-login" class="type-interior" style="background-color: white;">
+		<div data-role="header" id="header">		
+		</div>
+		
+<!-- 	<h2><label id="updateDatabase"></label></h2>  -->
+		
+		<div id="error" style="padding:10px;display:none;z-index:9000;background-color: #767573">
+			<table style="border-collapse: collapse; border: none;">
+				<tr bgcolor="#1F4E79">
+					<td style="border:none;">
+					<label id="errorMessageCaption" style='font-size: large; color: white;'></label><br/><br/>
+					</td>
+				</tr>
+				<tr bgcolor="#1589FF">
+					<td style="border:none;">
+					<label id="errormessage" style='color: white;'></label><br/><br/>
+					</td>
+				</tr>
+				<tr bgcolor="#1589FF">
+					<td bstyle="border:none;">
+					<table width="100%"><tr><td align="right">
+			 		<button style="text-align:left;" data-role="button" data-inline="true"  onclick="alert(true);">&nbsp;Retry&nbsp;</button>
+					<button style="text-align: right;" data-role="button" data-inline="true"  onclick="alert(false);">&nbsp;Do Later&nbsp;</button>
+					</td></tr></table>		
+					</td>
+				</tr>
+			</table>
+		</div>
+			
+		<div style="padding:10px">
+			<div id="progressDiv" class="ui-bar-b" style="padding:10px">
+				<label id="progressStatusALL"></label>
+				<div id="progressbarALL"></div>
+				<br/>	
+			</div>
+				
+			<div align="right" style="display:none" id="buttonDiv">
+				<button id="continueButton" onclick="com.swaas.hidoctor.edetailing.ui.view.Upgrade.goNext();" 
+						data-role="button" data-theme="c" 
+						data-mini="true" data-inline="true">Done</button>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
